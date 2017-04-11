@@ -1,0 +1,4 @@
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Release\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Release\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Release\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Release\IncentiveCampaign.Domain.pdb

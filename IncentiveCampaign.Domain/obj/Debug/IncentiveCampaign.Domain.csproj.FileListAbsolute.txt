@@ -13,3 +13,7 @@ E:\IncentiveCcampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domai
 E:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.csprojResolveAssemblyReference.cache
 E:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.dll
 E:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb

@@ -1,0 +1,9 @@
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Release\IncentiveCampaign.Apl.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Release\IncentiveCampaign.Apl.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Release\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Release\IncentiveCampaign.Repository.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Release\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Release\IncentiveCampaign.Repository.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Release\IncentiveCampaign.Apl.csprojResolveAssemblyReference.cache
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Release\IncentiveCampaign.Apl.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Release\IncentiveCampaign.Apl.pdb

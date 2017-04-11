@@ -15,10 +15,12 @@ namespace IncentiveCampaign.Api
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
+                name: "DefaultApi_",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            SwaggerConfig.Register();
         }
     }
 }

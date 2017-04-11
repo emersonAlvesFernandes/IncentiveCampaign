@@ -1,0 +1,7 @@
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Release\IncentiveCampaign.Repository.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Release\IncentiveCampaign.Repository.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Release\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Release\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Release\IncentiveCampaign.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Release\IncentiveCampaign.Repository.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Release\IncentiveCampaign.Repository.pdb

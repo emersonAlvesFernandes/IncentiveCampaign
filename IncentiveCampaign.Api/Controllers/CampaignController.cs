@@ -14,6 +14,7 @@ using FastMapper;
 
 namespace IncentiveCampaign.Api.Controllers
 {
+    //[RoutePrefix("api/campaign")]
     public class CampaignController : ApiController
     {
         private readonly IIncentiveCampaignApl incentiveCampaignApl;
