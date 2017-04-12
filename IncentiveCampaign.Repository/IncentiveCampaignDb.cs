@@ -11,16 +11,31 @@ namespace IncentiveCampaign.Repository
     {
         IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign);
 
+        IncentiveCampaignEntity Update(IncentiveCampaignEntity incentiveCampaign);
+
+        bool Delete(int campaignId);
+
         List<IncentiveCampaignEntity> ReadAll();
 
-        List<IncentiveCampaignEntity> ReadByDealer(int dealerId);
-
         IncentiveCampaignEntity ReadById(int Id);
+
+        List<IncentiveCampaignEntity> ReadByDealer(int dealerId);
+        
     }
 
     public class IncentiveCampaignDb : IIncentiveCampaignDb
     {
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IncentiveCampaignEntity Update(IncentiveCampaignEntity incentiveCampaign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int campaignId)
         {
             throw new NotImplementedException();
         }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DealerApl.cs" />
+    <Compile Include="DealershipApl.cs" />
     <Compile Include="IncentiveCampaignApl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreApl.cs" />

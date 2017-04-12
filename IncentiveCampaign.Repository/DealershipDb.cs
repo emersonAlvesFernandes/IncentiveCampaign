@@ -11,7 +11,9 @@ namespace IncentiveCampaign.Repository
 
     public interface IDealershipDb
     {
-        DealershipEntity Create(DealershipEntity incentiveCampaign, int campaignId);
+        DealershipEntity Create(int campaignId, DealershipEntity incentiveCampaign);
+
+        bool Delete( int campaignId, int dealershipId);
 
         DealershipEntity ReadById(int dealershipId);
 
@@ -22,7 +24,12 @@ namespace IncentiveCampaign.Repository
 
     public class DealershipDb : IDealershipDb
     {
-        public DealershipEntity Create(DealershipEntity incentiveCampaign, int campaignId)
+        public DealershipEntity Create(int campaignId, DealershipEntity incentiveCampaign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int campaignId, int dealershipId)
         {
             throw new NotImplementedException();
         }

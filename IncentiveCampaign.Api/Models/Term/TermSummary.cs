@@ -5,7 +5,7 @@ using System.Web;
 
 namespace IncentiveCampaign.Api.Models.Term
 {
-    class TermSummary
+    public class TermSummary
     {
         public int Id { get; set; }
 

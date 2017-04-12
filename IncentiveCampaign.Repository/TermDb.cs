@@ -12,6 +12,8 @@ namespace IncentiveCampaign.Repository
         int Upload(TermEntity term, int campaignId);
 
         TermEntity Download(int TermId);
+
+        List<TermEntity> ReadByCampaign(int campaignId);
     }
 
     public class TermDb : ITermDb
@@ -22,6 +24,11 @@ namespace IncentiveCampaign.Repository
         }
 
         public TermEntity Download(int TermId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TermEntity> ReadByCampaign(int campaignId)
         {
             throw new NotImplementedException();
         }

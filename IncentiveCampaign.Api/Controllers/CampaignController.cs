@@ -14,10 +14,11 @@ using IncentiveCampaign.Domain.Term;
 using IncentiveCampaign.Api.Models;
 using IncentiveCampaign.Api.Models.IncentiveCampaign;
 using IncentiveCampaign.Api.Models.Dealership;
+using IncentiveCampaign.Api.Models.Term;
 
 namespace IncentiveCampaign.Api.Controllers
 {
-    //[RoutePrefix("api/campaign")]
+    [RoutePrefix("api/campaign")]
     public class CampaignController : ApiController
     {
         private readonly IIncentiveCampaignApl incentiveCampaignApl;
@@ -28,6 +29,7 @@ namespace IncentiveCampaign.Api.Controllers
         }
 
         //admin -> criação de campanhas
+        //**
         [HttpPost]
         [Route("")]
         [ResponseType(typeof(List<IncentiveCampaignCreate>))]
@@ -35,16 +37,16 @@ namespace IncentiveCampaign.Api.Controllers
         {
             var username = 1234;
 
-            var incentiveCampaign = new IncentiveCampaignCreate()
-                .ToIncentiveCampaign(incentiveCampaignCreate);            
+            var incentiveCampaignEntity = new IncentiveCampaignCreate()
+                .ToIncentiveCampaignEntity(incentiveCampaignCreate);            
 
-            incentiveCampaign.Dealerships = new DealershipSummary()
+            incentiveCampaignEntity.Dealerships = new DealershipSummary()
                 .ToDealershipEntity(incentiveCampaignCreate.Dealerships);
 
             var entidade = 
                 TypeAdapter.Adapt<IncentiveCampaignCreate, IncentiveCampaignEntity>(incentiveCampaignCreate);
 
-            var entity = await Task.Run(() => incentiveCampaignApl.Create(incentiveCampaign));
+            var entity = await Task.Run(() => incentiveCampaignApl.Create(incentiveCampaignEntity));
 
             var retorno =
                 TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignCreate>(entity);
@@ -53,6 +55,7 @@ namespace IncentiveCampaign.Api.Controllers
         }
 
         //admin -> tela de todas as campanhas
+        //**
         [HttpGet]
         [Route("")]
         [ResponseType(typeof(List<IncentiveCampaignSummary>))]
@@ -66,7 +69,48 @@ namespace IncentiveCampaign.Api.Controllers
             return this.Ok(returnCollection);
         }
 
+        //admin -> tela de edição decampanhas
+        //**
+        [HttpGet]
+        [Route("{campaignId}")]
+        [ResponseType(typeof(IncentiveCampaignWithLists))]
+        public async Task<IHttpActionResult> GetById([FromUri] int campaignId)
+        {
+            var entity = await Task.Run(() => incentiveCampaignApl.GetById(campaignId));
+
+            var summary =
+                TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignWithLists>(entity);
+
+            summary.Dealerships =
+                TypeAdapter.Adapt<List<DealershipEntity>, List<DealershipSummary>>(entity.Dealerships);
+
+            summary.Terms =
+                TypeAdapter.Adapt<List<TermEntity>, List<TermSummary>>(entity.Terms);
+            
+            return this.Ok(summary);
+        }
+
+        //admin -> tela de edição decampanhas (edita somente a campanha, para os dealerships o serviço é separado)
+        //**
+        [HttpPut]
+        [Route("{campaignId}")]
+        [ResponseType(typeof(IncentiveCampaignSummary))]
+        public async Task<IHttpActionResult> Update([FromBody] IncentiveCampaignCreate incentiveCampaignCreate)
+        {
+            var incentiveCampaignEntity = new IncentiveCampaignCreate()
+                .ToIncentiveCampaignEntity(incentiveCampaignCreate);
+
+            var entity = await Task.Run(() => incentiveCampaignApl.Update(incentiveCampaignEntity));
+
+            var summary =
+                TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignSummary>(entity);
+
+            return this.Ok(summary);
+        }
+
+
         //admin -> tela de inserir pontos manuais 
+        //***
         [HttpGet]
         [Route("dealer/{dealerId}")]
         [ResponseType(typeof(List<IncentiveCampaignSummary>))]
@@ -81,6 +125,7 @@ namespace IncentiveCampaign.Api.Controllers
         }
 
         //bmb -> tela do bmb gestor, todas as campanhas para a concessionária
+        //***
         [HttpGet]
         [Route("{dealershipId}/manager")]
         [ResponseType(typeof(List<IncentiveCampaignWithScoreAmmount>))]

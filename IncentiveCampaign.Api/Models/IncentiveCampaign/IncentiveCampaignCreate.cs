@@ -23,7 +23,7 @@ namespace IncentiveCampaign.Api.Models
 
         public List<DealershipSummary> Dealerships { get; set; }
 
-        public IncentiveCampaignEntity ToIncentiveCampaign(IncentiveCampaignCreate createObj)
+        public IncentiveCampaignEntity ToIncentiveCampaignEntity(IncentiveCampaignCreate createObj)
         {
             var campaign = new IncentiveCampaignEntity()
             {

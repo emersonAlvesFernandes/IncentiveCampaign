@@ -147,16 +147,20 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CampaignController.cs" />
     <Compile Include="Controllers\DealerController.cs" />
+    <Compile Include="Controllers\DealershipController.cs" />
     <Compile Include="Controllers\ScoreController.cs" />
+    <Compile Include="Filters\ValidateModelStateFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dealership\DealershipCreate.cs" />
     <Compile Include="Models\Dealership\DealershipSummary.cs" />
     <Compile Include="Models\Dealer\DealerIds.cs" />
     <Compile Include="Models\Dealer\DealerSummary.cs" />
     <Compile Include="Models\Dealer\DealerWithScoreAmmount.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignSummary.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignCreate.cs" />
+    <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithLists.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithScoreAmmount.cs" />
     <Compile Include="Models\Score\PeriodScore.cs" />
     <Compile Include="Models\Score\ScoresIds.cs" />

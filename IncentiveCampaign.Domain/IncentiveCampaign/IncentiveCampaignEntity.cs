@@ -1,4 +1,5 @@
 ﻿using IncentiveCampaign.Domain.Dealership;
+using IncentiveCampaign.Domain.Term;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +19,9 @@ namespace IncentiveCampaign.Domain.IncentiveCampaign
 
         public bool AgreementLetterNeeded { get; set; }
 
-        public List<Dealership.DealershipEntity> Dealerships { get; set; }
-       
+        public List<DealershipEntity> Dealerships { get; set; }
+
+        public List<TermEntity> Terms { get; set; }
+
     }
 }

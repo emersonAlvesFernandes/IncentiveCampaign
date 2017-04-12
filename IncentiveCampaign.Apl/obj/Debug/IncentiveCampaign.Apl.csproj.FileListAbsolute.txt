@@ -13,12 +13,12 @@ D:\IncentiveCcampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.pdb
 E:\IncentiveCcampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.csprojResolveAssemblyReference.cache
 E:\IncentiveCcampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.dll
 E:\IncentiveCcampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.csprojResolveAssemblyReference.cache
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.Apl.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.Apl.pdb
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.Domain.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.Repository.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.Domain.pdb
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.Repository.pdb
-C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.csprojResolveAssemblyReference.cache
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.pdb
