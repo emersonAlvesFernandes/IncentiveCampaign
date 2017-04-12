@@ -17,7 +17,6 @@ using IncentiveCampaign.Api.Models.Dealership;
 
 namespace IncentiveCampaign.Api.Controllers
 {
-    //[RoutePrefix("api/campaign")]
     public class CampaignController : ApiController
     {
         private readonly IIncentiveCampaignApl incentiveCampaignApl;
