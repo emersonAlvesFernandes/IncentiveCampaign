@@ -1,0 +1,19 @@
+c:\users\pichau\documents\visual studio 2015\Projects\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Pichau\documents\visual studio 2015\Projects\IncentiveCcampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\documents\visual studio 2015\Projects\IncentiveCcampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\documents\visual studio 2015\Projects\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\documents\visual studio 2015\Projects\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb
+D:\IncentiveCcampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.dll
+D:\IncentiveCcampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.pdb
+D:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.csprojResolveAssemblyReference.cache
+D:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.dll
+D:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb
+E:\IncentiveCcampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.dll
+E:\IncentiveCcampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.pdb
+E:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.csprojResolveAssemblyReference.cache
+E:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.dll
+E:\IncentiveCcampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.pdb
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.dll
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb
