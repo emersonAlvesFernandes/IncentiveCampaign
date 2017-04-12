@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace IncentiveCampaign.Domain.Score
 {
-    public class Score
+    public class ScoreEntity
     {
-        public Score()
+        public ScoreEntity()
         {
 
         }
 
-        public Score(int id, int value, bool isblocked, string description, string proposal, string contract, string policy)
+        public ScoreEntity(int id, int value, bool isblocked, string description, string proposal, string contract, string policy)
         {
             this.Id = id;
             this.Value = value;

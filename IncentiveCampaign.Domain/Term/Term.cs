@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IncentiveCampaign.Domain.Term
 {
-    public class Term
+    public class TermEntity
     {
         public int Id { get; set; }
 

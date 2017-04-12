@@ -9,51 +9,51 @@ namespace IncentiveCampaign.Repository
 {
     public interface IScoreDb
     {
-        Score ReadById(int scoreId);
+        ScoreEntity ReadById(int scoreId);
 
-        List<Score> ReadByDealer(int dealer);
+        List<ScoreEntity> ReadByDealer(int dealer);
 
-        List<Score> ReadByDealer(int dealer, DateTime? From, DateTime? To);
+        List<ScoreEntity> ReadByDealer(int dealer, DateTime? From, DateTime? To);
 
-        List<Score> ReadByDealerAndDealership(int dealershipId, int dealerId);
+        List<ScoreEntity> ReadByDealerAndDealership(int dealershipId, int dealerId);
 
-        Score CreateScore(Score score);
+        ScoreEntity CreateScore(ScoreEntity score);
 
-        bool WriteDown(Score score);
+        bool WriteDown(ScoreEntity score);
 
         void Invalidate(int ids);
     }
 
     public class ScoreDb : IScoreDb
     {
-        public Score ReadById(int scoreId)
+        public ScoreEntity ReadById(int scoreId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Score> ReadByDealer(int dealer)
+        public List<ScoreEntity> ReadByDealer(int dealer)
         {
             throw new NotImplementedException();
         }
 
-        public List<Score> ReadByDealer(int dealer, DateTime? From, DateTime? To)
+        public List<ScoreEntity> ReadByDealer(int dealer, DateTime? From, DateTime? To)
         {
             //Nesta proc cdevo obter todos os pontos, 
             //fazer em subselect para identificar dos pontos, quais são bloqueados
             throw new NotImplementedException();
         }
 
-        public List<Score> ReadByDealerAndDealership(int dealershipId, int dealerId)
+        public List<ScoreEntity> ReadByDealerAndDealership(int dealershipId, int dealerId)
         {
             throw new NotImplementedException();
         }
 
-        public Score CreateScore(Score score)
+        public ScoreEntity CreateScore(ScoreEntity score)
         {
             throw new NotImplementedException();
         }
 
-        public bool WriteDown(Score score)
+        public bool WriteDown(ScoreEntity score)
         {
             throw new NotImplementedException();
         }

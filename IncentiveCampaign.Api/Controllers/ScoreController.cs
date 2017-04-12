@@ -1,6 +1,6 @@
-﻿using IncentiveCampaign.Apl;
+﻿using IncentiveCampaign.Api.Models.Score;
+using IncentiveCampaign.Apl;
 using IncentiveCampaign.Domain.Score;
-using IncentiveCampaign.Domain.Score.RequestModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,7 @@ namespace IncentiveCampaign.Api.Controllers
         //admin / bmb (extrato com pontos e baixas)
         [HttpPost]
         [Route("")]
-        [ResponseType(typeof(List<Score>))]
+        [ResponseType(typeof(List<ScoreEntity>))]
         public async Task<IHttpActionResult> GetAllByDealerId([FromBody] PeriodScore score)
         {
             var collection = await Task.Run(()=> scoreApl.GetByDealer(score.DealerId, score.StartDate, score.EndDate));
@@ -35,8 +35,8 @@ namespace IncentiveCampaign.Api.Controllers
         //admin
         [HttpPost]
         [Route("create")]
-        [ResponseType(typeof(Score))]
-        public async Task<IHttpActionResult> CreateScore([FromBody] Score score)
+        [ResponseType(typeof(ScoreEntity))]
+        public async Task<IHttpActionResult> CreateScore([FromBody] ScoreEntity score)
         {
             var collection = await Task.Run(() => scoreApl.CreateScore(score));
 
@@ -46,7 +46,7 @@ namespace IncentiveCampaign.Api.Controllers
         //admin
         [HttpGet]
         [Route("")]
-        [ResponseType(typeof(List<Score>))]
+        [ResponseType(typeof(List<ScoreEntity>))]
         public async Task<IHttpActionResult> GetValidByDealerId([FromUri] int dealerId)
         {
             var collection = await Task.Run(() => scoreApl.GetOnlyValid(dealerId));
@@ -70,7 +70,7 @@ namespace IncentiveCampaign.Api.Controllers
         //admin
         [HttpPost]
         [Route("dealers/writedown")]
-        [ResponseType(typeof(List<Score>))]
+        [ResponseType(typeof(List<ScoreEntity>))]
         public async Task<IHttpActionResult> WriteDownScoresByDealers([FromBody]ScoresIds scoresIds)
         {
             //TODO

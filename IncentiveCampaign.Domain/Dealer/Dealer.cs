@@ -1,8 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using IncentiveCampaign.Domain.Dealership;
+using IncentiveCampaign.Domain.Score;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace IncentiveCampaign.Domain.Dealer
 {
-    public class Dealer
+    public class DealerEntity
     {
         public int Id { get; set; }
 
@@ -12,8 +18,9 @@ namespace IncentiveCampaign.Domain.Dealer
 
         public bool AcceptedTerm { get; set; }
 
-        public List<Dealership.Dealership> Dealerships { get; set; }
+        public List<Dealership.DealershipEntity> Dealerships { get; set; }
 
-        public List<Score.Score> Scores { get; set; }
+        public List<ScoreEntity> Scores { get; set; }
     }
 }
+

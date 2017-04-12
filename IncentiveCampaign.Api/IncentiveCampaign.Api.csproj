@@ -49,6 +49,14 @@
       <HintPath>..\packages\FastMapper.1.2.0\lib\net40\FastMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.4.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.WebApi, Version=6.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.WebApi.6.4.0\lib\Net45\FluentValidation.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -143,6 +151,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dealership\DealershipSummary.cs" />
+    <Compile Include="Models\Dealer\DealerIds.cs" />
+    <Compile Include="Models\Dealer\DealerSummary.cs" />
+    <Compile Include="Models\Dealer\DealerWithScoreAmmount.cs" />
+    <Compile Include="Models\IncentiveCampaign\IncentiveCampaignSummary.cs" />
+    <Compile Include="Models\IncentiveCampaign\IncentiveCampaignCreate.cs" />
+    <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithScoreAmmount.cs" />
+    <Compile Include="Models\Score\PeriodScore.cs" />
+    <Compile Include="Models\Score\ScoresIds.cs" />
+    <Compile Include="Models\Term\TermSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\Regional\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IncentiveCampaign.Apl\IncentiveCampaign.Apl.csproj">

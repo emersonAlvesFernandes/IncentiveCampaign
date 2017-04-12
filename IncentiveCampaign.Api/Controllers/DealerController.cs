@@ -1,7 +1,7 @@
 ﻿using FastMapper;
+using IncentiveCampaign.Api.Models.Dealer;
 using IncentiveCampaign.Apl;
 using IncentiveCampaign.Domain.Dealer;
-using IncentiveCampaign.Domain.Dealer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,9 +31,10 @@ namespace IncentiveCampaign.Api.Controllers
         {
             var collection = await Task.Run(() => dealerApl.GetAll());
 
-            var dealersWithScoreAmmount = new DealerWithScoreAmmount().ToDealerWithScoreAmmount(collection);
+            //var dealersWithScoreAmmount = new DealerWithScoreAmmount().ToDealerWithScoreAmmount(collection);
 
-            return this.Ok(dealersWithScoreAmmount);
+            //return this.Ok(dealersWithScoreAmmount);
+            return this.Ok();
         }
 
         //bmb -> relação de dealer por concessionária, tela de relacionamento de dealers para a campanha
@@ -45,7 +46,7 @@ namespace IncentiveCampaign.Api.Controllers
             var collection = await Task.Run(() => dealerApl.GeByDealership(dealershipId));
 
             var returnCollection =
-                TypeAdapter.Adapt<List<Dealer>, List<DealerSummary>>(collection);
+                TypeAdapter.Adapt<List<DealerEntity>, List<DealerSummary>>(collection);
 
             return this.Ok(returnCollection);
         }

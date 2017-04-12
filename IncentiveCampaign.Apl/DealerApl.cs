@@ -10,9 +10,9 @@ namespace IncentiveCampaign.Apl
 {
     public interface IDealerApl
     {
-        List<Dealer> GetAll();
+        List<DealerEntity> GetAll();
 
-        List<Dealer> GeByDealership(int dealershipId);
+        List<DealerEntity> GeByDealership(int dealershipId);
 
         IDictionary<int, string> RegisterToCampaign(List<int> ids, int campaignId);
     }
@@ -36,7 +36,7 @@ namespace IncentiveCampaign.Apl
             this.scoreDb = scoreDb;
         }
 
-        public List<Dealer> GetAll()
+        public List<DealerEntity> GetAll()
         {
             var collection = dealerDb.ReadAll();
 
@@ -49,7 +49,7 @@ namespace IncentiveCampaign.Apl
             return collection;
         }
 
-        public List<Dealer> GeByDealership(int dealershipId)
+        public List<DealerEntity> GeByDealership(int dealershipId)
         {
             var collection = dealerDb.ReadByDealerShip(dealershipId);
             return collection;
@@ -84,7 +84,7 @@ namespace IncentiveCampaign.Apl
             return collection;
         }
 
-        private Dealer ReadOnCorporateBase(int id)
+        private DealerEntity ReadOnCorporateBase(int id)
         {
             try
             {

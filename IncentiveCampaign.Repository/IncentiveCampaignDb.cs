@@ -1,5 +1,4 @@
 ﻿using IncentiveCampaign.Domain.IncentiveCampaign;
-using IncentiveCampaign.Domain.IncentiveCampaign.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

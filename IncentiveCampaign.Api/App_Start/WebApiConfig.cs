@@ -20,7 +20,7 @@ namespace IncentiveCampaign.Api
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            SwaggerConfig.Register();
+            //SwaggerConfig.Register();
         }
     }
 }

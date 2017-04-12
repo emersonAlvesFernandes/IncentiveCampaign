@@ -1,5 +1,5 @@
 ﻿using IncentiveCampaign.Domain.IncentiveCampaign;
-using IncentiveCampaign.Domain.IncentiveCampaign.ViewModels;
+using IncentiveCampaign.Domain.Term;
 using IncentiveCampaign.Repository;
 using System;
 using System.Collections.Generic;
@@ -22,6 +22,8 @@ namespace IncentiveCampaign.Apl
 
         List<IncentiveCampaignEntity> GetManagerCampaigns(int dealershipId, int managerId);
 
+        TermEntity UploadTerm(TermEntity term, int campaignId);
+
     }
 
 
@@ -31,10 +33,19 @@ namespace IncentiveCampaign.Apl
         private readonly IDealershipDb dealershipDb;
         private readonly IDealerDb dealerDb;
         private readonly IScoreDb scoreDb;
+        private readonly ITermDb termDb;
 
-        public IncentiveCampaignApl(IIncentiveCampaignDb database)
+        public IncentiveCampaignApl(IIncentiveCampaignDb incentiveCampaignDb, 
+            IDealershipDb dealershipDb, 
+            IDealerDb dealerDb, 
+            IScoreDb scoreDb, 
+            ITermDb termDb)
         {
-            this.incentiveCampaignDb = database;
+            this.incentiveCampaignDb = incentiveCampaignDb;            
+            this.dealershipDb = dealershipDb;
+            this.dealerDb = dealerDb;
+            this.scoreDb = scoreDb;
+            this.termDb = termDb;
         }
 
         public IncentiveCampaignApl()
@@ -43,6 +54,7 @@ namespace IncentiveCampaign.Apl
             dealershipDb = new DealershipDb();
             dealerDb = new DealerDb();
             scoreDb = new ScoreDb();
+            termDb = new TermDb();
         }
 
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
@@ -91,6 +103,18 @@ namespace IncentiveCampaign.Apl
 
             //N Campaigns >> 1 Dealerships >> 1 Dealer >> N Scores
             return campaigns;
+        }
+
+        public TermEntity UploadTerm(TermEntity term, int campaignId)
+        {
+            term.Id = termDb.Upload(term, campaignId);
+
+            return term;
+        }
+
+        public TermEntity Download(int termId)
+        {
+            return termDb.Download(termId);
         }
     }
 }

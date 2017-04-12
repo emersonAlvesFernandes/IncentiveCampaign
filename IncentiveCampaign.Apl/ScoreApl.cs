@@ -10,11 +10,11 @@ namespace IncentiveCampaign.Apl
 {
     public interface IScoreApl
     {
-        List<Score> GetByDealer(int dealerId, DateTime from, DateTime To);
+        List<ScoreEntity> GetByDealer(int dealerId, DateTime from, DateTime To);
 
-        List<Score> GetOnlyValid(int dealerId);
+        List<ScoreEntity> GetOnlyValid(int dealerId);
 
-        Score CreateScore(Score score);
+        ScoreEntity CreateScore(ScoreEntity score);
 
         IDictionary<int, string> WriteDown(List<int> scoreIds);
     }
@@ -33,14 +33,14 @@ namespace IncentiveCampaign.Apl
             this.scoreDb = scoreDb;
         }
 
-        public List<Score> GetByDealer(int dealerId, DateTime from, DateTime To)
+        public List<ScoreEntity> GetByDealer(int dealerId, DateTime from, DateTime To)
         {
             var collection = scoreDb.ReadByDealer(dealerId, from, To);
 
             return collection;
         }
 
-        public Score CreateScore(Score score)
+        public ScoreEntity CreateScore(ScoreEntity score)
         {
             return scoreDb.CreateScore(score);
 
@@ -48,7 +48,7 @@ namespace IncentiveCampaign.Apl
 
         }
 
-        public List<Score> GetOnlyValid(int dealerId)
+        public List<ScoreEntity> GetOnlyValid(int dealerId)
         {
             var allScores = scoreDb.ReadByDealer(dealerId, null, null);
 
@@ -63,8 +63,8 @@ namespace IncentiveCampaign.Apl
         {
             //TODO: Resolver erro: estou criando ponto total abaixo, mas não está agrupado por campanha
 
-            var notFoundscores = new List<Score>(); //new Dictionary<int, string>();
-            var foundScores = new List<Score>();
+            var notFoundscores = new List<ScoreEntity>(); //new Dictionary<int, string>();
+            var foundScores = new List<ScoreEntity>();
 
             foreach(var s in scoresIds)
             {
@@ -84,7 +84,7 @@ namespace IncentiveCampaign.Apl
             var description = "baixa de ponto(s) con id(s) "
                 + string.Join(", ", foundScores.Select(x=>x.Id.ToString()));
 
-            var scoreDown = new Score(0, 
+            var scoreDown = new ScoreEntity(0, 
                 total, 
                 false,
                 description,
@@ -112,7 +112,7 @@ namespace IncentiveCampaign.Apl
             return allScoresResult;
         }
 
-        private Score ReadById(int scoreId)
+        private ScoreEntity ReadById(int scoreId)
         {
             try
             {

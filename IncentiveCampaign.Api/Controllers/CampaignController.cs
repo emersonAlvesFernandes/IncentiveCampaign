@@ -6,11 +6,14 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using IncentiveCampaign.Domain.IncentiveCampaign.ViewModels;
 using IncentiveCampaign.Domain.IncentiveCampaign;
 using IncentiveCampaign.Domain.Dealership;
 using IncentiveCampaign.Apl;
 using FastMapper;
+using IncentiveCampaign.Domain.Term;
+using IncentiveCampaign.Api.Models;
+using IncentiveCampaign.Api.Models.IncentiveCampaign;
+using IncentiveCampaign.Api.Models.Dealership;
 
 namespace IncentiveCampaign.Api.Controllers
 {
@@ -32,11 +35,11 @@ namespace IncentiveCampaign.Api.Controllers
         {
             var username = 1234;
 
-            var incentiveCampaign = new IncentiveCampaignEntity()
-                .ToIncentiveCampaign(incentiveCampaignCreate);
+            var incentiveCampaign = new IncentiveCampaignCreate()
+                .ToIncentiveCampaign(incentiveCampaignCreate);            
 
-            incentiveCampaign.Dealerships = new Dealership()
-                .ToDealership(incentiveCampaignCreate.Dealerships);
+            incentiveCampaign.Dealerships = new DealershipSummary()
+                .ToDealershipEntity(incentiveCampaignCreate.Dealerships);
 
             var entidade = 
                 TypeAdapter.Adapt<IncentiveCampaignCreate, IncentiveCampaignEntity>(incentiveCampaignCreate);
@@ -91,6 +94,17 @@ namespace IncentiveCampaign.Api.Controllers
 
             //TODO: Transformar collection em view model:
             // campaign >> dealerships >> dealer >> scores
+
+            return this.Ok();
+        }
+
+
+        [HttpPost]
+        [Route("{campaignId}/upload/term")]
+        [ResponseType(typeof(List<TermEntity>))]
+        public async Task<IHttpActionResult> UploadTerm([FromUri] int campaignId)
+        {
+
 
             return this.Ok();
         }

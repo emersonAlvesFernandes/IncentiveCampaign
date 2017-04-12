@@ -1,9 +1,10 @@
-﻿using IncentiveCampaign.Domain.Dealership.ViewModels;
+﻿using IncentiveCampaign.Domain.Dealer;
+using System;
 using System.Collections.Generic;
 
 namespace IncentiveCampaign.Domain.Dealership
 {
-    public class Dealership
+    public class DealershipEntity
     {
         public int Id { get; set; }
 
@@ -13,38 +14,6 @@ namespace IncentiveCampaign.Domain.Dealership
 
         public bool AgreementLetterSent { get; set; }
 
-        public List<Dealer.Dealer> Dealers { get; set; }
-
-        public Dealership ToDealership (DealershipSummary d)
-        {
-            var ret = new Dealership
-            {
-                Id = d.Id,
-                Name = d.Name,
-                Cnpj = d.Cnpj,
-                AgreementLetterSent = d.AgreementLetterSent,                
-            };
-
-            return ret;
-        }
-
-        public List<Dealership> ToDealership(List<DealershipSummary> list)
-        {
-            var collection = new List<Dealership>();
-
-            foreach (var l in list)
-            {
-                var ret = new Dealership
-                {
-                    Id = l.Id,
-                    Name = l.Name,
-                    Cnpj = l.Cnpj,
-                    AgreementLetterSent = l.AgreementLetterSent,
-                };
-            }
-
-            return collection;
-        }
-
+        public List<DealerEntity> Dealers { get; set; }      
     }
 }

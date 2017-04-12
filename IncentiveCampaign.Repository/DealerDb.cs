@@ -9,30 +9,30 @@ namespace IncentiveCampaign.Repository
 {
     public interface IDealerDb
     {
-        List<Dealer> ReadAll();
+        List<DealerEntity> ReadAll();
 
-        Dealer ReadOnCorporateBase(int userId);
+        DealerEntity ReadOnCorporateBase(int userId);
 
-        List<Dealer> ReadByDealerShip(int dealership);
+        List<DealerEntity> ReadByDealerShip(int dealership);
 
-        Dealer ReadByIdAndCampaignId(int dealerId, int campaignId);        
+        DealerEntity ReadByIdAndCampaignId(int dealerId, int campaignId);        
 
         bool RegisterToCampaign(int campaignId, int dealerId);        
     }
 
     public class DealerDb : IDealerDb
     {
-        public Dealer ReadOnCorporateBase(int userId)
+        public DealerEntity ReadOnCorporateBase(int userId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Dealer> ReadAll()
+        public List<DealerEntity> ReadAll()
         {
             throw new NotImplementedException();
         }
 
-        public List<Dealer> ReadByDealerShip(int dealership)
+        public List<DealerEntity> ReadByDealerShip(int dealership)
         {
             throw new NotImplementedException();
         }
@@ -42,7 +42,7 @@ namespace IncentiveCampaign.Repository
             return true;
         }
 
-        public Dealer ReadByIdAndCampaignId(int dealerId, int campaignId)
+        public DealerEntity ReadByIdAndCampaignId(int dealerId, int campaignId)
         {
             throw new NotImplementedException();
         }

@@ -1,5 +1,5 @@
 ﻿using IncentiveCampaign.Domain.Dealership;
-using IncentiveCampaign.Domain.Dealership.ViewModels;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,33 +11,33 @@ namespace IncentiveCampaign.Repository
 
     public interface IDealershipDb
     {
-        Dealership Create(Dealership incentiveCampaign, int campaignId);
+        DealershipEntity Create(DealershipEntity incentiveCampaign, int campaignId);
 
-        Dealership ReadById(int dealershipId);
+        DealershipEntity ReadById(int dealershipId);
 
-        List<Dealership> ReadByCampaign(int campaign);
+        List<DealershipEntity> ReadByCampaign(int campaign);
 
-        List<Dealership> ReadByDealer(int dealerId);
+        List<DealershipEntity> ReadByDealer(int dealerId);
     }
 
     public class DealershipDb : IDealershipDb
     {
-        public Dealership Create(Dealership incentiveCampaign, int campaignId)
+        public DealershipEntity Create(DealershipEntity incentiveCampaign, int campaignId)
         {
             throw new NotImplementedException();
         }
 
-        public Dealership ReadById(int dealershipId)
+        public DealershipEntity ReadById(int dealershipId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Dealership> ReadByCampaign(int campaign)
+        public List<DealershipEntity> ReadByCampaign(int campaign)
         {
             throw new NotImplementedException();
         }
 
-        public List<Dealership> ReadByDealer(int dealerId)
+        public List<DealershipEntity> ReadByDealer(int dealerId)
         {
             throw new NotImplementedException();
         }        

@@ -9,19 +9,19 @@ namespace IncentiveCampaign.Repository
 {
     public interface ITermDb
     {
-        bool Upload(Term term);
+        int Upload(TermEntity term, int campaignId);
 
-        byte[] Download(int TermId);
+        TermEntity Download(int TermId);
     }
 
     public class TermDb : ITermDb
     {
-        public bool Upload(Term term)
+        public int Upload(TermEntity term, int campaignId)
         {
             throw new NotImplementedException();
         }
 
-        public byte[] Download(int TermId)
+        public TermEntity Download(int TermId)
         {
             throw new NotImplementedException();
         }
