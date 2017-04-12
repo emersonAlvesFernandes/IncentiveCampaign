@@ -29,12 +29,12 @@ namespace IncentiveCampaign.Api.Controllers
         [ResponseType(typeof(List<DealerWithScoreAmmount>))]
         public async Task<IHttpActionResult> GetAllDealersWithScoreAmmount()
         {
-            var collection = await Task.Run(() => dealerApl.GetAll());
 
-            //var dealersWithScoreAmmount = new DealerWithScoreAmmount().ToDealerWithScoreAmmount(collection);
+            var dealerCollection = await Task.Run(() => dealerApl.GetAll());
 
-            //return this.Ok(dealersWithScoreAmmount);
-            return this.Ok();
+            var dealersWithScoreAmmount = new DealerWithScoreAmmount().ToDealerWithScoreAmmount(dealerCollection);
+
+            return this.Ok(dealersWithScoreAmmount);            
         }
 
         //bmb -> relação de dealer por concessionária, tela de relacionamento de dealers para a campanha

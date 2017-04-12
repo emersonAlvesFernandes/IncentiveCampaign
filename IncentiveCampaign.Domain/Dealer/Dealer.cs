@@ -18,7 +18,7 @@ namespace IncentiveCampaign.Domain.Dealer
 
         public bool AcceptedTerm { get; set; }
 
-        public List<Dealership.DealershipEntity> Dealerships { get; set; }
+        public List<DealershipEntity> Dealerships { get; set; }
 
         public List<ScoreEntity> Scores { get; set; }
     }
