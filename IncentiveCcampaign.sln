@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncentiveCampaign.Api", "IncentiveCampaign.Api\IncentiveCampaign.Api.csproj", "{A1ED0CF1-577F-4798-AE8E-DE1DD1893BFD}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 -IncentiveCampaign.Repository", "2 -IncentiveCampaign.Repository", "{B06D227C-AFF5-44D7-8A5E-A69C364D8E31}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - IncentiveCampaign.Domain", "3 - IncentiveCampaign.Domain", "{AB28C9A9-FE6D-4A59-93E7-D8B378DDF957}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncentiveCampaign.WebApi", "IncentiveCampaign.WebApi\IncentiveCampaign.WebApi.csproj", "{0C030395-1E61-4469-9A04-7CB997D450DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{E23DEE3C-A35C-457D-AC1D-86A1F32A9A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E23DEE3C-A35C-457D-AC1D-86A1F32A9A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E23DEE3C-A35C-457D-AC1D-86A1F32A9A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C030395-1E61-4469-9A04-7CB997D450DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C030395-1E61-4469-9A04-7CB997D450DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C030395-1E61-4469-9A04-7CB997D450DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C030395-1E61-4469-9A04-7CB997D450DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +56,6 @@ Global
 		{4BCBBA9A-9784-44B7-9293-98485D953693} = {D83BB12D-34B1-4691-A862-FB20CE76EAE1}
 		{3E7A42FB-0AD4-4431-A4D7-092913C01D02} = {B06D227C-AFF5-44D7-8A5E-A69C364D8E31}
 		{E23DEE3C-A35C-457D-AC1D-86A1F32A9A14} = {AB28C9A9-FE6D-4A59-93E7-D8B378DDF957}
+		{0C030395-1E61-4469-9A04-7CB997D450DA} = {3ADE14CA-D6FE-4FC2-A3D5-AB83BEEFB024}
 	EndGlobalSection
 EndGlobal
