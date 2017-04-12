@@ -32,7 +32,7 @@ namespace IncentiveCampaign.Api.Controllers
             return this.Ok(collection);
         }
 
-        //admin
+        //admin tela de relação de pontos (ao clicar no botão de baixa) criar ponto manualmente
         [HttpPost]
         [Route("create")]
         [ResponseType(typeof(ScoreEntity))]
@@ -43,7 +43,7 @@ namespace IncentiveCampaign.Api.Controllers
             return this.Ok(collection);
         }
 
-        //admin
+        //admin tela de relação de pontos (ao clicar no botão de baixa) criar ponto manualmente
         [HttpGet]
         [Route("")]
         [ResponseType(typeof(List<ScoreEntity>))]
@@ -54,7 +54,7 @@ namespace IncentiveCampaign.Api.Controllers
             return this.Ok(collection);
         }
 
-        //admin
+        //admin tela de relação de pontos (ao clicar no botão de baixa) criar ponto manualmente
         [HttpPost]
         [Route("writedown")]
         [ResponseType(typeof(IDictionary<int, string>))]

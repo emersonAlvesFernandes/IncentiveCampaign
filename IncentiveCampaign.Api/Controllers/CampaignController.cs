@@ -110,7 +110,7 @@ namespace IncentiveCampaign.Api.Controllers
 
 
         //admin -> tela de inserir pontos manuais 
-        //***
+        //*
         [HttpGet]
         [Route("dealer/{dealerId}")]
         [ResponseType(typeof(List<IncentiveCampaignSummary>))]
@@ -125,7 +125,7 @@ namespace IncentiveCampaign.Api.Controllers
         }
 
         //bmb -> tela do bmb gestor, todas as campanhas para a concessionária
-        //***
+        //*
         [HttpGet]
         [Route("{dealershipId}/manager")]
         [ResponseType(typeof(List<IncentiveCampaignWithScoreAmmount>))]
@@ -143,14 +143,13 @@ namespace IncentiveCampaign.Api.Controllers
             return this.Ok();
         }
 
-
+        //*
         [HttpPost]
         [Route("{campaignId}/upload/term")]
         [ResponseType(typeof(List<TermEntity>))]
         public async Task<IHttpActionResult> UploadTerm([FromUri] int campaignId)
         {
-
-
+            //TODO
             return this.Ok();
         }
 
