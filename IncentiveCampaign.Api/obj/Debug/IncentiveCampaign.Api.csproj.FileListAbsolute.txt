@@ -1,5 +1,3 @@
-C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Api\obj\Debug\IncentiveCampaign.Api.csprojResolveAssemblyReference.cache
-C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Api\bin\Swagger.XML
 C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Api\bin\ApplicationInsights.config
 C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Api\bin\roslyn\csc.exe
 C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Api\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll

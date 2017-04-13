@@ -36,7 +36,7 @@ namespace IncentiveCampaign.WebApi.Controllers
             var incentiveCampaignEntity = new IncentiveCampaignCreate()
                 .ToIncentiveCampaignEntity(incentiveCampaignCreate);
 
-            incentiveCampaignEntity.Dealerships = new DealershipSummary()
+            incentiveCampaignEntity.Dealerships = new DealershipCreate()
                 .ToDealershipEntity(incentiveCampaignCreate.Dealerships);
 
             var entidade =
@@ -103,7 +103,6 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             return this.Ok(summary);
         }
-
 
         //admin -> tela de inserir pontos manuais 
         //*

@@ -23,7 +23,7 @@ namespace IncentiveCampaign.WebApi.Models.IncentiveCampaign
         {
             var ret = new IncentiveCampaignSummary
             {
-                Id = c.Id,
+                //Id = c.Id,
                 Name = c.Name,
                 StartDate = c.StartDate,
                 EndDate = c.EndDate,

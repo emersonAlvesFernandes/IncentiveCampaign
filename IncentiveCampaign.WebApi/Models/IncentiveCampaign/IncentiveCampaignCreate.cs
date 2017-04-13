@@ -8,7 +8,7 @@ namespace IncentiveCampaign.WebApi.Models
 {
     public class IncentiveCampaignCreate
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string Name { get; set; }
 
@@ -18,13 +18,13 @@ namespace IncentiveCampaign.WebApi.Models
 
         public bool AgreementLetterNeeded { get; set; }
 
-        public List<DealershipSummary> Dealerships { get; set; }
+        public List<DealershipCreate> Dealerships { get; set; }
 
         public IncentiveCampaignEntity ToIncentiveCampaignEntity(IncentiveCampaignCreate createObj)
         {
             var campaign = new IncentiveCampaignEntity()
             {
-                Id = createObj.Id,
+                //Id = createObj.Id,
                 Name = createObj.Name,
                 StartDate = createObj.StartDate,
                 EndDate = createObj.EndDate,
