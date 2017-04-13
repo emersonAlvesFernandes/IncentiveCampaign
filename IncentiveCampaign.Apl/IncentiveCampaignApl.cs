@@ -1,4 +1,5 @@
-﻿using IncentiveCampaign.Domain.IncentiveCampaign;
+﻿using IncentiveCampaign.CorporateRepository;
+using IncentiveCampaign.Domain.IncentiveCampaign;
 using IncentiveCampaign.Domain.Term;
 using IncentiveCampaign.Repository;
 using System;
@@ -56,7 +57,8 @@ namespace IncentiveCampaign.Apl
 
         public IncentiveCampaignApl()
         {
-            incentiveCampaignDb = new IncentiveCampaignDb();
+            //incentiveCampaignDb = new IncentiveCampaignDb();
+            incentiveCampaignDb = new IncentiveCampaignCorporateDb();
             dealershipDb = new DealershipDb();
             dealerDb = new DealerDb();
             scoreDb = new ScoreDb();

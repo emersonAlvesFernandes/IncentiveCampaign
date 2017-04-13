@@ -1,4 +1,5 @@
 ﻿using IncentiveCampaign.Domain.Dealership;
+using IncentiveCampaign.Domain.IncentiveCampaign;
 using IncentiveCampaign.Repository;
 using System;
 using System.Collections.Generic;

@@ -17,11 +17,16 @@ namespace IncentiveCampaign.Domain.IncentiveCampaign
 
         public bool IsActive { get; set; }
 
-        public bool AgreementLetterNeeded { get; set; }
+        public DateTime CreationDate { get; set; }
 
+        public string UserName { get; set; }
+
+        public bool AgreementLetterNeeded { get; set; }        
+        
         public List<DealershipEntity> Dealerships { get; set; }
 
         public List<TermEntity> Terms { get; set; }
+        
 
     }
 }

@@ -33,16 +33,16 @@ namespace IncentiveCampaign.WebApi.Controllers
         {
             var username = 1234;
 
-            var incentiveCampaignEntity = new IncentiveCampaignCreate()
-                .ToIncentiveCampaignEntity(incentiveCampaignCreate);
+            //var incentiveCampaignEntity = new IncentiveCampaignCreate()
+            //    .ToIncentiveCampaignEntity(incentiveCampaignCreate);
 
-            incentiveCampaignEntity.Dealerships = new DealershipCreate()
-                .ToDealershipEntity(incentiveCampaignCreate.Dealerships);
+            //incentiveCampaignEntity.Dealerships = new DealershipCreate()
+            //    .ToDealershipEntity(incentiveCampaignCreate.Dealerships);
 
             var entidade =
                 TypeAdapter.Adapt<IncentiveCampaignCreate, IncentiveCampaignEntity>(incentiveCampaignCreate);
 
-            var entity = await Task.Run(() => incentiveCampaignApl.Create(incentiveCampaignEntity));
+            var entity = await Task.Run(() => incentiveCampaignApl.Create(entidade));
 
             var retorno =
                 TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignCreate>(entity);

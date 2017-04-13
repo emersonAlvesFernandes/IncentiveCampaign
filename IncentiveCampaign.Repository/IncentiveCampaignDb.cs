@@ -8,21 +8,6 @@ using System.Threading.Tasks;
 
 namespace IncentiveCampaign.Repository
 {
-    public interface IIncentiveCampaignDb
-    {
-        IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign);
-
-        IncentiveCampaignEntity Update(IncentiveCampaignEntity incentiveCampaign);
-
-        bool Delete(int campaignId);
-
-        List<IncentiveCampaignEntity> ReadAll();
-
-        IncentiveCampaignEntity ReadById(int Id);
-
-        List<IncentiveCampaignEntity> ReadByDealer(int dealerId);
-        
-    }
 
     public class IncentiveCampaignDb : RepositoryBase, IIncentiveCampaignDb
     {

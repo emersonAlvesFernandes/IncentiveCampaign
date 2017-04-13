@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Dealership\Dealership.cs" />
     <Compile Include="Dealer\Dealer.cs" />
+    <Compile Include="IncentiveCampaign\IIncentiveCampaignDb.cs" />
     <Compile Include="IncentiveCampaign\IncentiveCampaignEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regional\Regional.cs" />

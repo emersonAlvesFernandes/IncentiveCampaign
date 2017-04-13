@@ -1,0 +1,17 @@
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\IncentiveCampaign.CorporateRepository.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\IncentiveCampaign.CorporateRepository.pdb
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\BancoDaimlerChrysler.Corporativo.Connector.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\BancoDaimlerChrysler.Corporativo.Erro.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\BancoDaimlerChrysler.Corporativo.Sql.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\BMB.Corporativo.Connector.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\BMB.Corporativo.Erro.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\Microsoft.SqlServer.Smo.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\obj\Debug\IncentiveCampaign.CorporateRepository.csprojResolveAssemblyReference.cache
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\obj\Debug\IncentiveCampaign.CorporateRepository.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\obj\Debug\IncentiveCampaign.CorporateRepository.pdb
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\BancoMercedesBenz.Corporativo.Controles.DCCred.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\IncentiveCampaign.Domain.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.CorporateRepository\bin\Debug\IncentiveCampaign.Domain.pdb

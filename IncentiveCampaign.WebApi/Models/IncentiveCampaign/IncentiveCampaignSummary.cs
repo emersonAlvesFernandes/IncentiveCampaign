@@ -6,7 +6,7 @@ using System.Web;
 namespace IncentiveCampaign.WebApi.Models.IncentiveCampaign
 {
     public class IncentiveCampaignSummary
-    {        
+    {
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -16,6 +16,10 @@ namespace IncentiveCampaign.WebApi.Models.IncentiveCampaign
         public DateTime EndDate { get; set; }
 
         public bool IsActive { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
+        public string UserName { get; set; }
 
         public bool AgreementLetterNeeded { get; set; }
 

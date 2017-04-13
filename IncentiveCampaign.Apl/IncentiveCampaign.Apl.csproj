@@ -47,6 +47,10 @@
     <Compile Include="ScoreApl.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IncentiveCampaign.CorporateRepository\IncentiveCampaign.CorporateRepository.csproj">
+      <Project>{a0be240a-f360-46e7-937d-18ed09c7d14a}</Project>
+      <Name>IncentiveCampaign.CorporateRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IncentiveCampaign.Domain\IncentiveCampaign.Domain.csproj">
       <Project>{e23dee3c-a35c-457d-ac1d-86a1f32a9a14}</Project>
       <Name>IncentiveCampaign.Domain</Name>

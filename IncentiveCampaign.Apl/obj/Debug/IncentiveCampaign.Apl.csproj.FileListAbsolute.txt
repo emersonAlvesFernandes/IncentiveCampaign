@@ -31,3 +31,8 @@ C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\I
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.csprojResolveAssemblyReference.cache
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\obj\Debug\IncentiveCampaign.Apl.pdb
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.CorporateRepository.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\BancoDaimlerChrysler.Corporativo.Connector.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\BMB.Corporativo.Erro.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\BancoDaimlerChrysler.Corporativo.Sql.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Apl\bin\Debug\IncentiveCampaign.CorporateRepository.pdb
