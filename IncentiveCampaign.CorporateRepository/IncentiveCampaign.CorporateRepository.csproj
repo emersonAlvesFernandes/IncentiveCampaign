@@ -76,9 +76,11 @@
   <ItemGroup>
     <Compile Include="DatabaseConnector.cs" />
     <Compile Include="DbNames\Database.cs" />
+    <Compile Include="DealershipCorporateDb.cs" />
     <Compile Include="IncentiveCampaignCorporateDb.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TermCorporateDb.cs" />
     <Compile Include="ThreadHelper.cs" />
   </ItemGroup>
   <ItemGroup>

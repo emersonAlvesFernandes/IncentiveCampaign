@@ -1,4 +1,5 @@
 ﻿using IncentiveCampaign.CorporateRepository;
+using IncentiveCampaign.Domain.Dealership;
 using IncentiveCampaign.Domain.IncentiveCampaign;
 using IncentiveCampaign.Domain.Term;
 using IncentiveCampaign.Repository;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace IncentiveCampaign.Apl
 {       
@@ -45,7 +47,7 @@ namespace IncentiveCampaign.Apl
         public IncentiveCampaignApl(IIncentiveCampaignDb incentiveCampaignDb, 
             IDealershipDb dealershipDb, 
             IDealerDb dealerDb, 
-            IScoreDb scoreDb, 
+            IScoreDb scoreDb,
             ITermDb termDb)
         {
             this.incentiveCampaignDb = incentiveCampaignDb;            
@@ -57,8 +59,8 @@ namespace IncentiveCampaign.Apl
 
         public IncentiveCampaignApl()
         {
-            incentiveCampaignDb = new IncentiveCampaignDb();
-            //incentiveCampaignDb = new IncentiveCampaignCorporateDb();
+            //incentiveCampaignDb = new IncentiveCampaignDb();
+            incentiveCampaignDb = new IncentiveCampaignCorporateDb();
             dealershipDb = new DealershipDb();
             dealerDb = new DealerDb();
             scoreDb = new ScoreDb();
@@ -67,21 +69,28 @@ namespace IncentiveCampaign.Apl
 
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
         {
-            //TODO incluir transaction 
-            incentiveCampaign.CreationDate = DateTime.Now;
-            incentiveCampaign.IsActive = true;
-            incentiveCampaign.UserName = "RBRONZO";
-
-
-            var campaign = incentiveCampaignDb.Create(incentiveCampaign);
-
-            foreach(var d in incentiveCampaign.Dealerships)
+            //TODO Testar
+            using (var transaction = new TransactionScope())
             {
-                var dealership = dealershipDb.Create(campaign.Id, d);
-                campaign.Dealerships.Add(dealership);
-            }
-            
-            return campaign;
+                incentiveCampaign.CreationDate = DateTime.Now;
+                incentiveCampaign.IsActive = true;
+                incentiveCampaign.UserName = "RBRONZO";
+
+                incentiveCampaign = incentiveCampaignDb.Create(incentiveCampaign);
+
+                foreach (var d in incentiveCampaign.Dealerships)
+                {
+                    var dealership = dealershipDb.Register(incentiveCampaign.Id, d);
+                }
+
+                foreach (var t in incentiveCampaign.Terms)
+                {
+                    var term = termDb.Register(incentiveCampaign.Id, t);
+                }
+
+                transaction.Complete();
+                return incentiveCampaign;
+            }  
         }
 
         /// <summary>
@@ -145,7 +154,8 @@ namespace IncentiveCampaign.Apl
 
         public List<IncentiveCampaignEntity> GetManagerCampaigns(int dealershipId, int managerId)
         {
-            var campaigns = this.GetByDealership(dealershipId);            
+            var campaigns = this.GetByDealership(dealershipId);       
+            
             foreach (var campaign in campaigns)
             {
                 var user = dealerDb.ReadByIdAndCampaignId(managerId, campaign.Id);

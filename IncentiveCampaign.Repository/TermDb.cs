@@ -7,17 +7,13 @@ using System.Threading.Tasks;
 
 namespace IncentiveCampaign.Repository
 {
-    public interface ITermDb
-    {
-        int Upload(TermEntity term, int campaignId);
-
-        TermEntity Download(int TermId);
-
-        List<TermEntity> ReadByCampaign(int campaignId);
-    }
-
     public class TermDb : ITermDb
     {
+        public TermEntity Register(int incentiveCampaignId, TermEntity term)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Upload(TermEntity term, int campaignId)
         {
             throw new NotImplementedException();

@@ -9,19 +9,6 @@ using System.Threading.Tasks;
 namespace IncentiveCampaign.Repository
 {
 
-    public interface IDealershipDb
-    {
-        DealershipEntity Create(int campaignId, DealershipEntity incentiveCampaign);
-
-        bool Delete( int campaignId, int dealershipId);
-
-        DealershipEntity ReadById(int dealershipId);
-
-        List<DealershipEntity> ReadByCampaign(int campaign);
-
-        List<DealershipEntity> ReadByDealer(int dealerId);
-    }
-
     public class DealershipDb : IDealershipDb
     {
         public DealershipEntity Create(int campaignId, DealershipEntity incentiveCampaign)
@@ -47,6 +34,11 @@ namespace IncentiveCampaign.Repository
         public List<DealershipEntity> ReadByDealer(int dealerId)
         {
             throw new NotImplementedException();
-        }        
+        }
+
+        public bool Register(int campaignId, DealershipEntity dealership)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -163,6 +163,7 @@
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithScoreAmmount.cs" />
     <Compile Include="Models\Score\PeriodScore.cs" />
     <Compile Include="Models\Score\ScoresIds.cs" />
+    <Compile Include="Models\Term\TermCreate.cs" />
     <Compile Include="Models\Term\TermSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

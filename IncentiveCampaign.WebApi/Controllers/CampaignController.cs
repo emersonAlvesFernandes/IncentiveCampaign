@@ -24,13 +24,11 @@ namespace IncentiveCampaign.WebApi.Controllers
             incentiveCampaignApl = new IncentiveCampaignApl();
         }
 
-        //public CampaignController(IIncentiveCampaignApl incentiveCampaignApl)
-        //{
-        //    this.incentiveCampaignApl = incentiveCampaignApl;
-        //}
+        
 
         //admin -> criação de campanhas
         //**
+        //Cria campanha, dealerships e termo(s)
         [HttpPost]
         [Route("")]
         [ResponseType(typeof(List<IncentiveCampaignCreate>))]
@@ -44,10 +42,16 @@ namespace IncentiveCampaign.WebApi.Controllers
             //incentiveCampaignEntity.Dealerships = new DealershipCreate()
             //    .ToDealershipEntity(incentiveCampaignCreate.Dealerships);
 
-            var entidade =
+            var campaignEntity =
                 TypeAdapter.Adapt<IncentiveCampaignCreate, IncentiveCampaignEntity>(incentiveCampaignCreate);
 
-            var entity = await Task.Run(() => incentiveCampaignApl.Create(entidade));
+            campaignEntity.Dealerships =
+                TypeAdapter.Adapt<List<DealershipCreate>, List<DealershipEntity>>(incentiveCampaignCreate.Dealerships);
+
+            campaignEntity.Terms =
+                TypeAdapter.Adapt<List<TermCreate>, List<TermEntity>>(incentiveCampaignCreate.Terms);
+
+            var entity = await Task.Run(() => incentiveCampaignApl.Create(campaignEntity));
 
             var retorno =
                 TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignCreate>(entity);

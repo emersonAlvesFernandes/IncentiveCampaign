@@ -1,4 +1,5 @@
-﻿using IncentiveCampaign.Domain.Dealership;
+﻿using FluentValidation;
+using IncentiveCampaign.Domain.Dealership;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace IncentiveCampaign.WebApi.Models.Dealership
 
         //public int Id { get; set; }
 
-        public string Name { get; set; }
+        //public string Name { get; set; }
 
-        public string Cnpj { get; set; }
+        //public string Cnpj { get; set; }
 
         public bool AgreementLetterSent { get; set; }
 
@@ -47,6 +48,19 @@ namespace IncentiveCampaign.WebApi.Models.Dealership
             }
 
             return collection;
+        }
+    }
+
+    public class DealershipCreateValidator : AbstractValidator<DealershipCreate>
+    {
+        public DealershipCreateValidator()
+        {
+            //RuleFor(x => x.xxx).NotEmpty().WithMessage("xxxxx Name cannot be empty.")
+            //                            .Length(0, 100).WithMessage("Incentive Campaign Name cannot be more than 100 characters.");
+
+            //RuleFor(x => x.StartDate).LessThan(DateTime.Today).WithMessage("You cannot enter a birth date in the future.");
+
+            //RuleFor(x => x.Username).Length(8, 999).WithMessage("The user name must be at least 8 characters long.");
         }
     }
 }

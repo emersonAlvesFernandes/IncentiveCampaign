@@ -15,5 +15,7 @@ namespace IncentiveCampaign.Domain.Term
         public byte[] Contents { get; set; }
 
         public string Extention { get; set; }
+
+        public long TotalBytes { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using IncentiveCampaign.Domain.IncentiveCampaign;
 using IncentiveCampaign.WebApi.Models.Dealership;
+using IncentiveCampaign.WebApi.Models.Term;
 using System;
 using System.Collections.Generic;
 
@@ -19,6 +20,8 @@ namespace IncentiveCampaign.WebApi.Models
         public bool AgreementLetterNeeded { get; set; }
 
         public List<DealershipCreate> Dealerships { get; set; }
+
+        public List<TermCreate> Terms { get; set; }
 
         public IncentiveCampaignEntity ToIncentiveCampaignEntity(IncentiveCampaignCreate createObj)
         {

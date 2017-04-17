@@ -9,6 +9,7 @@ namespace IncentiveCampaign.CorporateRepository
 {
     public class IncentiveCampaignCorporateDb : IIncentiveCampaignDb
     {
+        internal readonly IDatabaseConnector connector;
 
         public IncentiveCampaignCorporateDb()
         {
@@ -21,8 +22,6 @@ namespace IncentiveCampaign.CorporateRepository
             this.connector = connector;
             this.connector.Database = DbNames.Database.BmbDigital;
         }
-
-        internal readonly IDatabaseConnector connector;
 
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
         {
