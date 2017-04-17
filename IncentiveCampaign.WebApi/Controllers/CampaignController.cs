@@ -24,6 +24,11 @@ namespace IncentiveCampaign.WebApi.Controllers
             incentiveCampaignApl = new IncentiveCampaignApl();
         }
 
+        //public CampaignController(IIncentiveCampaignApl incentiveCampaignApl)
+        //{
+        //    this.incentiveCampaignApl = incentiveCampaignApl;
+        //}
+
         //admin -> criação de campanhas
         //**
         [HttpPost]
@@ -31,7 +36,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [ResponseType(typeof(List<IncentiveCampaignCreate>))]
         public async Task<IHttpActionResult> CreateAsync([FromBody]IncentiveCampaignCreate incentiveCampaignCreate)
         {
-            var username = 1234;
+            var username = "RBRONZO";
 
             //var incentiveCampaignEntity = new IncentiveCampaignCreate()
             //    .ToIncentiveCampaignEntity(incentiveCampaignCreate);

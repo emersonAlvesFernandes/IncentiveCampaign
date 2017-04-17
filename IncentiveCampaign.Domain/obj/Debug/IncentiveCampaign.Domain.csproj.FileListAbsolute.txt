@@ -20,6 +20,5 @@ C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\
 C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\bin\Debug\IncentiveCampaign.Domain.pdb
-C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.csprojResolveAssemblyReference.cache
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Domain\obj\Debug\IncentiveCampaign.Domain.pdb

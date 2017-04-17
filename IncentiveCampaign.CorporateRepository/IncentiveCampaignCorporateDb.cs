@@ -59,6 +59,41 @@ namespace IncentiveCampaign.CorporateRepository
             }
         }
 
+        public IncentiveCampaignEntity Update(IncentiveCampaignEntity incentiveCampaign)
+        {
+            try
+            {
+                this.connector.Procedure = "spr_digit_upd_refac_campa_incen";
+
+                this.connector.AddParameter("num_campa_incen", incentiveCampaign.Id);
+                this.connector.AddParameter("nom_campa_incen", incentiveCampaign.Name);
+                this.connector.AddParameter("dat_inici_vigen", incentiveCampaign.StartDate);
+                this.connector.AddParameter("dat_final_vigen", incentiveCampaign.EndDate);
+                this.connector.AddParameter("ind_ativo", incentiveCampaign.IsActive);
+                this.connector.AddParameter("dat_situa_regis", incentiveCampaign.CreationDate);
+                this.connector.AddParameter("cod_user", incentiveCampaign.UserName);
+                this.connector.AddParameter("ind_neces_carta_acord", incentiveCampaign.AgreementLetterNeeded);
+
+                using (var reader = this.connector.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        incentiveCampaign.Id = Convert.ToInt32(reader["num_campa_incen"]);
+                        return incentiveCampaign;
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                this.connector.Dispose();
+            }
+        }
+
         public bool Delete(int campaignId)
         {
             try
@@ -197,39 +232,6 @@ namespace IncentiveCampaign.CorporateRepository
             }
         }
 
-        public IncentiveCampaignEntity Update(IncentiveCampaignEntity incentiveCampaign)
-        {
-            try
-            {
-                this.connector.Procedure = "spr_digit_upd_refac_campa_incen";
-
-                this.connector.AddParameter("num_campa_incen", incentiveCampaign.Id);
-                this.connector.AddParameter("nom_campa_incen", incentiveCampaign.Name);
-                this.connector.AddParameter("dat_inici_vigen", incentiveCampaign.StartDate);
-                this.connector.AddParameter("dat_final_vigen", incentiveCampaign.EndDate);
-                this.connector.AddParameter("ind_ativo", incentiveCampaign.IsActive);
-                this.connector.AddParameter("dat_situa_regis", incentiveCampaign.CreationDate);
-                this.connector.AddParameter("cod_user", incentiveCampaign.UserName);
-                this.connector.AddParameter("ind_neces_carta_acord", incentiveCampaign.AgreementLetterNeeded);
-
-                using (var reader = this.connector.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        incentiveCampaign.Id = Convert.ToInt32(reader["num_campa_incen"]);
-                        return incentiveCampaign;
-                    }
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                this.connector.Dispose();
-            }
-        }
+        
     }
 }

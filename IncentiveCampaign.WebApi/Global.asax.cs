@@ -17,7 +17,8 @@ namespace IncentiveCampaign.WebApi
             // Código que é executado na inicialização do aplicativo
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //UnityConfig.RegisterComponents();
         }
     }
 }

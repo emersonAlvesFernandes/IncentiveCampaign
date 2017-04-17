@@ -57,8 +57,8 @@ namespace IncentiveCampaign.Apl
 
         public IncentiveCampaignApl()
         {
-            //incentiveCampaignDb = new IncentiveCampaignDb();
-            incentiveCampaignDb = new IncentiveCampaignCorporateDb();
+            incentiveCampaignDb = new IncentiveCampaignDb();
+            //incentiveCampaignDb = new IncentiveCampaignCorporateDb();
             dealershipDb = new DealershipDb();
             dealerDb = new DealerDb();
             scoreDb = new ScoreDb();
@@ -66,8 +66,13 @@ namespace IncentiveCampaign.Apl
         }
 
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
-        {           
+        {
             //TODO incluir transaction 
+            incentiveCampaign.CreationDate = DateTime.Now;
+            incentiveCampaign.IsActive = true;
+            incentiveCampaign.UserName = "RBRONZO";
+
+
             var campaign = incentiveCampaignDb.Create(incentiveCampaign);
 
             foreach(var d in incentiveCampaign.Dealerships)
