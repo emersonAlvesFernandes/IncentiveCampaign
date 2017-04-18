@@ -10,7 +10,7 @@ namespace IncentiveCampaign.Domain.Term
     {
         TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser);
 
-        int Upload(TermEntity term, int campaignId);
+        bool Upload(int campaignId, TermEntity term);
 
         TermEntity Download(int TermId);
 

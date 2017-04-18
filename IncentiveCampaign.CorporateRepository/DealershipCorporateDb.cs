@@ -147,7 +147,7 @@ namespace IncentiveCampaign.CorporateRepository
                 this.connector.Dispose();
             }
         }
-
+        
         public DealershipEntity ReadById(int dealershipId)
         {
             try

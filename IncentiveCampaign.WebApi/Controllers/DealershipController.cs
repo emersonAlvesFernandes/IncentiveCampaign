@@ -18,21 +18,37 @@ namespace IncentiveCampaign.WebApi.Controllers
     {
         private readonly IDealershipApl dealershipApl;
 
-        public DealershipController(IDealershipApl dealershipApl)
+        public DealershipController()
         {
-            this.dealershipApl = dealershipApl;
+            this.dealershipApl = new DealershipApl();
         }
 
         [HttpPost]
         [Route("")]
         [ResponseType(typeof(bool))]
-        public async Task<IHttpActionResult> Create([FromBody] DealershipCreate dealershipCreate, [FromUri] int campaignId)
+        public async Task<IHttpActionResult> Create([FromBody] DealershipCreate dealershipCreate, 
+            [FromUri] int campaignId)
         {
-            var dealershipEntity = new DealershipCreate().ToDealershipEntity(dealershipCreate);
+            //var dealershipEntity = new DealershipCreate().ToDealershipEntity(dealershipCreate);
+            var dealershipEntity =
+                TypeAdapter.Adapt<DealershipCreate, DealershipEntity>(dealershipCreate);
 
             var registerSucceed = await Task.Run(() => dealershipApl.Register(campaignId,
                 dealershipEntity));
             
+            return this.Ok(registerSucceed);
+        }
+
+        [HttpDelete]
+        [Route("")]
+        [ResponseType(typeof(bool))]
+        public async Task<IHttpActionResult> Delete([FromUri]int campaignId,
+    [FromUri]int dealershipId)
+        {
+            
+            var registerSucceed = await Task.Run(() => dealershipApl.Delete(campaignId,
+                dealershipId));
+
             return this.Ok(registerSucceed);
         }
     }

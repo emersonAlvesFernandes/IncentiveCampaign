@@ -24,8 +24,8 @@ namespace IncentiveCampaign.WebApi.Controllers
             incentiveCampaignApl = new IncentiveCampaignApl();
         }
 
-        
 
+        //TESTADO OK
         //admin -> criação de campanhas
         //**
         //Cria campanha, dealerships e termo(s)
@@ -43,7 +43,8 @@ namespace IncentiveCampaign.WebApi.Controllers
             
             return this.Ok();            
         }
-
+        
+        //TESTADO OK
         //admin -> tela de todas as campanhas
         //**
         [HttpGet]
@@ -59,6 +60,7 @@ namespace IncentiveCampaign.WebApi.Controllers
             return this.Ok(returnCollection);
         }
 
+        //TESTADO OK
         //admin -> tela de edição decampanhas
         //**
         [HttpGet]
@@ -74,16 +76,14 @@ namespace IncentiveCampaign.WebApi.Controllers
             return this.Ok(summary);
         }
 
+        //TESTADO OK >> TESTADO O CONTEXTO DE DEALERSHIP > TESTAR O CONTEXTO DO TERMO
         //admin -> tela de edição decampanhas (edita somente a campanha, para os dealerships o serviço é separado)
-        //** Parei aqui: está dando null exception na camada de banco
+        //** 
         [HttpPut]
         [Route("")]
         [ResponseType(typeof(IncentiveCampaignSummary))]
         public async Task<IHttpActionResult> Update([FromBody] IncentiveCampaignUpdate incentiveCampaignCreate)
-        {
-            //var incentiveCampaignEntity = new IncentiveCampaignCreate()
-            //    .ToIncentiveCampaignEntity(incentiveCampaignCreate);
-
+        {            
             var campaignEntity =
                 TypeAdapter.Adapt<IncentiveCampaignUpdate, IncentiveCampaignEntity>(incentiveCampaignCreate);
 
@@ -94,6 +94,8 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             return this.Ok(summary);
         }
+
+
 
         //admin -> tela de inserir pontos manuais 
         //*
@@ -128,17 +130,7 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             return this.Ok();
         }
-
-        //*
-        [HttpPost]
-        [Route("{campaignId}/upload/term")]
-        [ResponseType(typeof(List<TermEntity>))]
-        public async Task<IHttpActionResult> UploadTerm([FromUri] int campaignId)
-        {
-            //TODO
-            return this.Ok();
-        }
-
+        
         //bmb 
         //TODO: implementar GetUserCampaigns, que retorne IncentiveCampaignWithScoreAmmount
         // a diferença para o GetManagerCampaigns é que este leva em consideração somente as campanhas em que o 

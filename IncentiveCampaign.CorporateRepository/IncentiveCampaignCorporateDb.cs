@@ -9,7 +9,7 @@ namespace IncentiveCampaign.CorporateRepository
 {
     public class IncentiveCampaignCorporateDb : IIncentiveCampaignDb
     {
-        internal readonly IDatabaseConnector connector;
+        internal IDatabaseConnector connector;
 
         public IncentiveCampaignCorporateDb()
         {
@@ -62,6 +62,8 @@ namespace IncentiveCampaign.CorporateRepository
         {
             try
             {
+                this.connector = new DatabaseConnector();
+                this.connector.Database = DbNames.Database.BmbDigital;
                 this.connector.Procedure = "spr_digit_upd_refac_campa_incen";
 
                 this.connector.AddParameter("num_campa_incen", incentiveCampaign.Id);
@@ -222,7 +224,7 @@ namespace IncentiveCampaign.CorporateRepository
             }
             finally
             {
-                this.connector.Dispose();
+                this.connector.Dispose();                
             }
         }
 

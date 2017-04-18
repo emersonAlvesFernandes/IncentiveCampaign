@@ -17,7 +17,6 @@ namespace IncentiveCampaign.CorporateRepository
             this.connector.Database = DbNames.Database.BmbDigital;
         }
 
-
         public TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser)
         {
             try
@@ -53,7 +52,8 @@ namespace IncentiveCampaign.CorporateRepository
             }
         }
 
-        public int Upload(TermEntity term, int campaignId)
+        //TODO: Terminar aqui
+        public bool Upload(int campaignId, TermEntity term)
         {
             throw new NotImplementedException();
         }

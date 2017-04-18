@@ -1,4 +1,5 @@
-﻿using IncentiveCampaign.Domain.Dealership;
+﻿using IncentiveCampaign.CorporateRepository;
+using IncentiveCampaign.Domain.Dealership;
 using IncentiveCampaign.Domain.IncentiveCampaign;
 using IncentiveCampaign.Repository;
 using System;
@@ -26,6 +27,12 @@ namespace IncentiveCampaign.Apl
         {
             this.dealershipDb = dealershipDb;
             this.incentiveCampaignDb = incentiveCampaignDb;
+        }
+
+        public DealershipApl()
+        {
+            this.dealershipDb = new DealershipCorporateDb();
+            this.incentiveCampaignDb = new IncentiveCampaignCorporateDb();
         }
 
         public bool Register(int campaignId, DealershipEntity dealership)
