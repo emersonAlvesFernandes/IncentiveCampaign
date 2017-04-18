@@ -9,12 +9,7 @@ namespace IncentiveCampaign.Repository
 {
     public class TermDb : ITermDb
     {
-        public TermEntity Register(int incentiveCampaignId, TermEntity term)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Upload(TermEntity term, int campaignId)
+        public bool Delete(int termId)
         {
             throw new NotImplementedException();
         }
@@ -25,6 +20,16 @@ namespace IncentiveCampaign.Repository
         }
 
         public List<TermEntity> ReadByCampaign(int campaignId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Upload(TermEntity term, int campaignId)
         {
             throw new NotImplementedException();
         }

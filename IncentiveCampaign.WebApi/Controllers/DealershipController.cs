@@ -25,18 +25,15 @@ namespace IncentiveCampaign.WebApi.Controllers
 
         [HttpPost]
         [Route("")]
-        [ResponseType(typeof(DealershipCreate))]
-        public async Task<IHttpActionResult> Create([FromBody] DealershipCreate dealershipCreate)
+        [ResponseType(typeof(bool))]
+        public async Task<IHttpActionResult> Create([FromBody] DealershipCreate dealershipCreate, [FromUri] int campaignId)
         {
             var dealershipEntity = new DealershipCreate().ToDealershipEntity(dealershipCreate);
 
-            var entity = await Task.Run(() => dealershipApl.Create(dealershipCreate.CampaignId,
+            var registerSucceed = await Task.Run(() => dealershipApl.Register(campaignId,
                 dealershipEntity));
-
-            var summary =
-                TypeAdapter.Adapt<DealershipEntity, DealershipCreate>(entity);
-
-            return this.Ok(summary);
+            
+            return this.Ok(registerSucceed);
         }
     }
 }

@@ -8,12 +8,14 @@ namespace IncentiveCampaign.Domain.Term
 {
     public interface ITermDb
     {
-        TermEntity Register(int incentiveCampaignId, TermEntity term);
+        TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser);
 
         int Upload(TermEntity term, int campaignId);
 
         TermEntity Download(int TermId);
 
         List<TermEntity> ReadByCampaign(int campaignId);
+
+        bool Delete(int termId);
     }
 }

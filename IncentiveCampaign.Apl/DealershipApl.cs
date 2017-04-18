@@ -11,7 +11,7 @@ namespace IncentiveCampaign.Apl
 {
     public interface IDealershipApl
     {
-        DealershipEntity Create(int campaignId, DealershipEntity dealership);
+        bool Register(int campaignId, DealershipEntity dealership);
 
         bool Delete(int campaignId, int dealershipId);
     }
@@ -28,12 +28,12 @@ namespace IncentiveCampaign.Apl
             this.incentiveCampaignDb = incentiveCampaignDb;
         }
 
-        public DealershipEntity Create(int campaignId, DealershipEntity dealership)
+        public bool Register(int campaignId, DealershipEntity dealership)
         {
             var relatedCampaign = incentiveCampaignDb.ReadById(campaignId);
 
             if (relatedCampaign != null)
-                return dealershipDb.Create(campaignId, dealership);
+                return dealershipDb.Register(campaignId, dealership);
             else
                 throw new Exception("Campaign.Does.Not.Exists");
         }

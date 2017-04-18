@@ -159,6 +159,7 @@
     <Compile Include="Models\Dealer\DealerWithScoreAmmount.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignCreate.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignSummary.cs" />
+    <Compile Include="Models\IncentiveCampaign\IncentiveCampaignUpdate.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithLists.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithScoreAmmount.cs" />
     <Compile Include="Models\Score\PeriodScore.cs" />

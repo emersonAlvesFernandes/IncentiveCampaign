@@ -69,19 +69,13 @@ namespace IncentiveCampaign.CorporateRepository
                 this.connector.AddParameter("dat_inici_vigen", incentiveCampaign.StartDate);
                 this.connector.AddParameter("dat_final_vigen", incentiveCampaign.EndDate);
                 this.connector.AddParameter("ind_ativo", incentiveCampaign.IsActive);
-                this.connector.AddParameter("dat_situa_regis", incentiveCampaign.CreationDate);
-                this.connector.AddParameter("cod_user", incentiveCampaign.UserName);
+                //this.connector.AddParameter("dat_situa_regis", incentiveCampaign.CreationDate);
+                //this.connector.AddParameter("cod_user", incentiveCampaign.UserName);
                 this.connector.AddParameter("ind_neces_carta_acord", incentiveCampaign.AgreementLetterNeeded);
 
-                using (var reader = this.connector.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        incentiveCampaign.Id = Convert.ToInt32(reader["num_campa_incen"]);
-                        return incentiveCampaign;
-                    }
-                }
-                return null;
+                this.connector.ExecuteReader();
+
+                return incentiveCampaign;
             }
             catch (Exception ex)
             {
@@ -133,8 +127,8 @@ namespace IncentiveCampaign.CorporateRepository
                             EndDate = Convert.ToDateTime(reader["dat_final_vigen"]),
                             IsActive = Convert.ToBoolean(reader["ind_ativo"]),
                             CreationDate = Convert.ToDateTime(reader["dat_situa_regis"]),
-                            AgreementLetterNeeded = Convert.ToBoolean(reader["ind_neces_carta_acord"])
-                            
+                            AgreementLetterNeeded = Convert.ToBoolean(reader["ind_neces_carta_acord"]),
+                            UserName = reader["cod_user"].ToString()
                         };
 
                         campaigns.Add(c);
@@ -199,7 +193,7 @@ namespace IncentiveCampaign.CorporateRepository
             try
             {
                 this.connector.Procedure = "spr_digit_ler_refat_campa_incen_por_id";
-                this.connector.AddParameter("@num_campa_incen_usuar", id);
+                this.connector.AddParameter("@num_campa_incen", id);
 
                 using (var reader = this.connector.ExecuteReader())
                 {                    
@@ -213,7 +207,8 @@ namespace IncentiveCampaign.CorporateRepository
                             EndDate = Convert.ToDateTime(reader["dat_final_vigen"]),
                             IsActive = Convert.ToBoolean(reader["ind_ativo"]),
                             CreationDate = Convert.ToDateTime(reader["dat_situa_regis"]),
-                            AgreementLetterNeeded = Convert.ToBoolean(reader["ind_neces_carta_acord"])
+                            AgreementLetterNeeded = Convert.ToBoolean(reader["ind_neces_carta_acord"]),
+                            UserName = reader["cod_user"].ToString()
 
                         };
                         return c;

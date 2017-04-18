@@ -17,7 +17,8 @@ namespace IncentiveCampaign.CorporateRepository
             this.connector.Database = DbNames.Database.BmbDigital;
         }
 
-        public TermEntity Register(int incentiveCampaignId, TermEntity term)
+
+        public TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser)
         {
             try
             {
@@ -29,13 +30,13 @@ namespace IncentiveCampaign.CorporateRepository
                 this.connector.AddParameter("tip_exten", term.Extention);
                 this.connector.AddParameter("val_docum", term.Contents);
                 this.connector.AddParameter("num_bytes", term.TotalBytes);
-                this.connector.AddParameter("cod_user", term.TotalBytes);
+                this.connector.AddParameter("cod_usu", codUser);
 
                 using (var reader = this.connector.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        term.Id = Convert.ToInt32(reader["num_campa_incen"]);
+                        term.Id = Convert.ToInt32(reader["num_campa_incen_termo"]);
                         return term;
                     }
                 }
@@ -45,6 +46,81 @@ namespace IncentiveCampaign.CorporateRepository
             catch (Exception ex)
             {
                 throw;
+            }
+            finally
+            {
+                this.connector.Dispose();
+            }
+        }
+
+        public int Upload(TermEntity term, int campaignId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TermEntity Download(int documentId)
+        {
+            try
+            {
+                this.connector.Database = DbNames.Database.BmbDigital;
+                this.connector.Procedure = "spr_digit_ler_campa_incen_termo";
+                this.connector.AddParameter("num_campa_incen_termo", documentId);
+
+                using (var reader = this.connector.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var c = new TermEntity
+                        {
+                            Id = Convert.ToInt32(reader["num_campa_incen_termo"]),
+                            Name = reader["nom_campa_incen_termo"].ToString(),
+                            //CreationDate = reader["dat_publi"].ToDateTime(),
+                            Extention = reader["tip_exten"].ToString(),
+                            Contents = (byte[])reader["val_docum"],
+                            //UserId = reader["cod_user"].ToString()
+                            TotalBytes = Convert.ToInt64(reader["num_bytes"])
+                        };
+
+                        return c;
+                    }
+                }
+                return null;
+            }
+            finally
+            {
+                this.connector.Dispose();
+            }
+        }
+
+        public List<TermEntity> ReadByCampaign(int campaignId)
+        {
+            try
+            {
+                var terms = new List<TermEntity>();
+
+                this.connector.Database = DbNames.Database.BmbDigital;
+                this.connector.Procedure = "spr_digit_ler_refat_campa_incen_termo_por_campa";
+                this.connector.AddParameter("num_campa_incen", campaignId);
+
+                using (var reader = this.connector.ExecuteReader())
+                {                    
+                    while (reader.Read())
+                    {
+                        var t = new TermEntity
+                        {
+                            Id = Convert.ToInt32(reader["num_campa_incen_termo"]),
+                            Name = reader["nom_campa_incen_termo"].ToString(),
+                            //CreationDate = reader["dat_publi"].ToDateTime(),
+                            Extention = reader["tip_exten"].ToString(),
+                            Contents = (byte[])reader["val_docum"],
+                            //UserId = reader["cod_user"].ToString()
+                            TotalBytes = Convert.ToInt64(reader["num_bytes"])
+                        };
+
+                        terms.Add(t);
+                    }                    
+                }
+                return terms;
             }
             finally
             {
@@ -72,45 +148,6 @@ namespace IncentiveCampaign.CorporateRepository
             {
                 this.connector.Dispose();
             }
-        }
-
-        public TermEntity Download(int documentId)
-        {
-            try
-            {
-                this.connector.Database = DbNames.Database.BmbDigital;
-                this.connector.Procedure = "spr_digit_ler_campa_incen_termo";
-                this.connector.AddParameter("num_campa_incen_termo", documentId);
-
-                using (var reader = this.connector.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var c = new TermEntity
-                        {
-                            Id = Convert.ToInt32(reader["num_campa_incen_termo"]),
-                            Name = reader["nom_campa_incen_termo"].ToString(),                            
-                            //CreationDate = reader["dat_publi"].ToDateTime(),
-                            Extention = reader["tip_exten"].ToString(),
-                            Contents = (byte[])reader["val_docum"],                            
-                            //UserId = reader["cod_user"].ToString()
-                            TotalBytes = Convert.ToInt64(reader["num_bytes"])
-                        };
-
-                        return c;
-                    }
-                }
-                return null;
-            }
-            finally
-            {
-                this.connector.Dispose();
-            }
-        }
-
-        public TermEntity ReadByCampaign(int campaignId)
-        {
-            throw new NotImplementedException();
-        }
+        }        
     }
 }

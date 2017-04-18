@@ -15,13 +15,6 @@ E:\IncentiveCcampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.R
 E:\IncentiveCcampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Repository.pdb
 E:\IncentiveCcampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Domain.dll
 E:\IncentiveCcampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Domain.pdb
-C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Repository.dll
-C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Repository.pdb
-C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Domain.dll
-C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Domain.pdb
-C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.csprojResolveAssemblyReference.cache
-C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.dll
-C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.pdb
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Repository.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Repository.pdb
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Domain.dll
@@ -29,3 +22,10 @@ C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.csprojResolveAssemblyReference.cache
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.dll
 C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.pdb
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Repository.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Repository.pdb
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Domain.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\bin\Debug\IncentiveCampaign.Domain.pdb
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.csprojResolveAssemblyReference.cache
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.dll
+C:\Users\emerson.santos\Source\Repos\IncentiveCampaign\IncentiveCampaign.Repository\obj\Debug\IncentiveCampaign.Repository.pdb

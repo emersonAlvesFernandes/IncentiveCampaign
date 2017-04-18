@@ -31,32 +31,17 @@ namespace IncentiveCampaign.WebApi.Controllers
         //Cria campanha, dealerships e termo(s)
         [HttpPost]
         [Route("")]
-        [ResponseType(typeof(List<IncentiveCampaignCreate>))]
+        //[ResponseType(typeof(bool))]
         public async Task<IHttpActionResult> CreateAsync([FromBody]IncentiveCampaignCreate incentiveCampaignCreate)
-        {
-            var username = "RBRONZO";
-
-            //var incentiveCampaignEntity = new IncentiveCampaignCreate()
-            //    .ToIncentiveCampaignEntity(incentiveCampaignCreate);
-
-            //incentiveCampaignEntity.Dealerships = new DealershipCreate()
-            //    .ToDealershipEntity(incentiveCampaignCreate.Dealerships);
-
+        {                        
             var campaignEntity =
                 TypeAdapter.Adapt<IncentiveCampaignCreate, IncentiveCampaignEntity>(incentiveCampaignCreate);
 
-            campaignEntity.Dealerships =
-                TypeAdapter.Adapt<List<DealershipCreate>, List<DealershipEntity>>(incentiveCampaignCreate.Dealerships);
-
-            campaignEntity.Terms =
-                TypeAdapter.Adapt<List<TermCreate>, List<TermEntity>>(incentiveCampaignCreate.Terms);
-
+            campaignEntity.UserName = "RBRONZO";
+            
             var entity = await Task.Run(() => incentiveCampaignApl.Create(campaignEntity));
-
-            var retorno =
-                TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignCreate>(entity);
-
-            return this.Ok(retorno);
+            
+            return this.Ok();            
         }
 
         //admin -> tela de todas as campanhas
@@ -85,27 +70,24 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             var summary =
                 TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignWithLists>(entity);
-
-            summary.Dealerships =
-                TypeAdapter.Adapt<List<DealershipEntity>, List<DealershipSummary>>(entity.Dealerships);
-
-            summary.Terms =
-                TypeAdapter.Adapt<List<TermEntity>, List<TermSummary>>(entity.Terms);
-
+            
             return this.Ok(summary);
         }
 
         //admin -> tela de edição decampanhas (edita somente a campanha, para os dealerships o serviço é separado)
-        //**
+        //** Parei aqui: está dando null exception na camada de banco
         [HttpPut]
-        [Route("{campaignId}")]
+        [Route("")]
         [ResponseType(typeof(IncentiveCampaignSummary))]
-        public async Task<IHttpActionResult> Update([FromBody] IncentiveCampaignCreate incentiveCampaignCreate)
+        public async Task<IHttpActionResult> Update([FromBody] IncentiveCampaignUpdate incentiveCampaignCreate)
         {
-            var incentiveCampaignEntity = new IncentiveCampaignCreate()
-                .ToIncentiveCampaignEntity(incentiveCampaignCreate);
+            //var incentiveCampaignEntity = new IncentiveCampaignCreate()
+            //    .ToIncentiveCampaignEntity(incentiveCampaignCreate);
 
-            var entity = await Task.Run(() => incentiveCampaignApl.Update(incentiveCampaignEntity));
+            var campaignEntity =
+                TypeAdapter.Adapt<IncentiveCampaignUpdate, IncentiveCampaignEntity>(incentiveCampaignCreate);
+
+            var entity = await Task.Run(() => incentiveCampaignApl.Update(campaignEntity));
 
             var summary =
                 TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignSummary>(entity);

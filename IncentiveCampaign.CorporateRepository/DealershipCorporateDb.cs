@@ -30,7 +30,7 @@ namespace IncentiveCampaign.CorporateRepository
                 this.connector.Procedure = "spr_digit_ins_refac_campa_incen_conce";
 
                 this.connector.AddParameter("num_campa_incen", campaignId);
-                this.connector.AddParameter("num_entid_conce", dealership.Name);
+                this.connector.AddParameter("num_entid_conce", dealership.Id);
                 this.connector.AddParameter("ind_carta_acord", dealership.AgreementLetterSent);
 
                 this.connector.ExecuteReader();
@@ -70,13 +70,13 @@ namespace IncentiveCampaign.CorporateRepository
             }
         }
 
-        // usado para montar o objeto de campanha
+        // usado para montar o objeto de campanha ao editar uma campanha
         public List<DealershipEntity> ReadByCampaign(int campaignId)
         {
             try
             {
                 this.connector.Procedure = "spr_digit_ler_refat_campa_incen_conce_por_campa";
-                this.connector.AddParameter("@num_campa_incen_usuar", campaignId);
+                this.connector.AddParameter("@num_campa_incen", campaignId);
 
                 using (var reader = this.connector.ExecuteReader())
                 {
@@ -86,10 +86,10 @@ namespace IncentiveCampaign.CorporateRepository
                     {
                         var c = new DealershipEntity
                         {
-                            Id = Convert.ToInt32(reader["num_campa_incen"]),
+                            Id = Convert.ToInt32(reader["num_entid_conce"]),
                             Name = reader["nom_campa_incen"].ToString(),
                             Cnpj = reader["cnpj_cpf_entid_conce"].ToString(),
-                            AgreementLetterSent = Convert.ToBoolean(reader["cnpj_cpf_entid_conce"])
+                            AgreementLetterSent = Convert.ToBoolean(reader["ind_carta_acord"])
                             //Dealers                            
                         };
 

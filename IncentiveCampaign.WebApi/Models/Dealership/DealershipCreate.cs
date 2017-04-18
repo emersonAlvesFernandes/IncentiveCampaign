@@ -8,10 +8,8 @@ using System.Web;
 namespace IncentiveCampaign.WebApi.Models.Dealership
 {
     public class DealershipCreate
-    {
-        public int CampaignId { get; set; }
-
-        //public int Id { get; set; }
+    {        
+        public int Id { get; set; }
 
         //public string Name { get; set; }
 
@@ -23,9 +21,9 @@ namespace IncentiveCampaign.WebApi.Models.Dealership
         {
             var entity = new DealershipEntity
             {
-                //Id = vm.Id,
-                Name = vm.Name,
-                Cnpj = vm.Cnpj,
+                Id = vm.Id,
+                //Name = vm.Name,
+                //Cnpj = vm.Cnpj,
                 AgreementLetterSent = vm.AgreementLetterSent
             };
 
@@ -40,9 +38,9 @@ namespace IncentiveCampaign.WebApi.Models.Dealership
             {
                 var ret = new DealershipEntity
                 {
-                    //Id = l.Id,
-                    Name = l.Name,
-                    Cnpj = l.Cnpj,
+                    Id = l.Id,
+                    //Name = l.Name,
+                    //Cnpj = l.Cnpj,
                     AgreementLetterSent = l.AgreementLetterSent,
                 };
             }

@@ -20,7 +20,7 @@ namespace IncentiveCampaign.WebApi.Models
         public bool AgreementLetterNeeded { get; set; }
 
         public List<DealershipCreate> Dealerships { get; set; }
-
+        
         public List<TermCreate> Terms { get; set; }
 
         public IncentiveCampaignEntity ToIncentiveCampaignEntity(IncentiveCampaignCreate createObj)

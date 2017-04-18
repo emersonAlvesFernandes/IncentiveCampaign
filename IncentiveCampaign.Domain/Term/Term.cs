@@ -16,6 +16,10 @@ namespace IncentiveCampaign.Domain.Term
 
         public string Extention { get; set; }
 
-        public long TotalBytes { get; set; }
-    }
+        public long TotalBytes
+        {
+            get { return this.Contents.Length; }
+            set { }
+        }
+    }    
 }
