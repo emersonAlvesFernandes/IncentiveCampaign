@@ -27,17 +27,25 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpPost]
         [Route("{campaignId}/upload/term")]
         [ResponseType(typeof(List<TermEntity>))]
-        public async Task<IHttpActionResult> UploadTerm([FromUri] int campaignId, [FromBody]TermCreate termCreate)
+        public async Task<IHttpActionResult> UploadAsync([FromUri] int campaignId, [FromBody]TermCreate termCreate)
         {
             var termEntity =
                 TypeAdapter.Adapt<TermCreate, TermEntity>(termCreate);
 
-
-            this.termApl.Upload(campaignId, termEntity);
+            await Task.Run(()=> this.termApl.Upload(campaignId, termEntity));
             
             return this.Ok();
         }
 
-        //TODO DOWNLOAD
+        //TODO TESTAR ESTE FLUXO
+        [HttpGet]
+        [Route("{id}")]
+        [ResponseType(typeof(TermEntity))]
+        public async Task<IHttpActionResult> DownloadAsync([FromUri] int id)
+        {            
+            var term = await Task.Run(()=> this.termApl.Download(id));
+
+            return this.Ok(term);
+        }
     }
 }

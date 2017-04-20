@@ -50,7 +50,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpGet]
         [Route("")]
         [ResponseType(typeof(List<IncentiveCampaignSummary>))]
-        public async Task<IHttpActionResult> GetAll()
+        public async Task<IHttpActionResult> GetAllAsync()
         {
             var collection = await Task.Run(() => incentiveCampaignApl.GetAll());
 
@@ -66,7 +66,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpGet]
         [Route("{campaignId}")]
         [ResponseType(typeof(IncentiveCampaignWithLists))]
-        public async Task<IHttpActionResult> GetById([FromUri] int campaignId)
+        public async Task<IHttpActionResult> GetByIdAsync([FromUri] int campaignId)
         {
             var entity = await Task.Run(() => incentiveCampaignApl.GetById(campaignId));
 
@@ -82,7 +82,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpPut]
         [Route("")]
         [ResponseType(typeof(IncentiveCampaignSummary))]
-        public async Task<IHttpActionResult> Update([FromBody] IncentiveCampaignUpdate incentiveCampaignCreate)
+        public async Task<IHttpActionResult> UpdateAsync([FromBody] IncentiveCampaignUpdate incentiveCampaignCreate)
         {            
             var campaignEntity =
                 TypeAdapter.Adapt<IncentiveCampaignUpdate, IncentiveCampaignEntity>(incentiveCampaignCreate);
@@ -102,7 +102,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpGet]
         [Route("dealer/{dealerId}")]
         [ResponseType(typeof(List<IncentiveCampaignSummary>))]
-        public async Task<IHttpActionResult> GetByDealerId([FromUri]int dealerId)
+        public async Task<IHttpActionResult> GetByDealerIdAsync([FromUri]int dealerId)
         {
             var collection = await Task.Run(() => incentiveCampaignApl.GetByDealer(dealerId));
 
@@ -117,7 +117,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpGet]
         [Route("{dealershipId}/manager")]
         [ResponseType(typeof(List<IncentiveCampaignWithScoreAmmount>))]
-        public async Task<IHttpActionResult> GetManagerCampaigns([FromUri]int dealershipId)
+        public async Task<IHttpActionResult> GetManagerCampaignsAsync([FromUri]int dealershipId)
         {
             //get user data
             var user = 123;

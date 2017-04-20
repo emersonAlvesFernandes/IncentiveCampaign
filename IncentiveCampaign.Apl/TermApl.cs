@@ -13,7 +13,7 @@ namespace IncentiveCampaign.Apl
     {
         bool Upload(int campaignId, TermEntity term);
 
-        TermEntity Download(int termId);
+        TermEntity Download(int termId);        
 
         bool Delete(int termId);
     }
@@ -35,7 +35,7 @@ namespace IncentiveCampaign.Apl
 
         public TermEntity Download(int termId)
         {
-            throw new NotImplementedException();
+            return termDb.Download(termId);
         }
 
         public bool Upload(int campaignId, TermEntity term)

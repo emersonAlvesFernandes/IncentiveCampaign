@@ -31,7 +31,7 @@ namespace IncentiveCampaign.Apl
 
         List<IncentiveCampaignEntity> GetManagerCampaigns(int dealershipId, int managerId);
 
-        TermEntity UploadTerm(TermEntity term, int campaignId);
+        
 
     }
 
@@ -169,13 +169,6 @@ namespace IncentiveCampaign.Apl
 
             //N Campaigns >> 1 Dealerships >> 1 Dealer >> N Scores
             return campaigns;
-        }
-
-        public TermEntity UploadTerm(TermEntity term, int campaignId)
-        {
-            term.Id = termDb.Upload(term, campaignId);
-
-            return term;
         }
 
         public TermEntity Download(int termId)

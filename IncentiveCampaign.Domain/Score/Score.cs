@@ -8,6 +8,20 @@ namespace IncentiveCampaign.Domain.Score
 {
     public class ScoreEntity
     {
+        public int Id { get; set; }
+
+        public int Value { get; set; }
+
+        public bool IsBlocked { get; set; }
+
+        public string Descriprion { get; set; }
+
+        public string Proposal { get; set; }
+
+        public string Contract { get; set; }
+
+        public string Policy { get; set; }      
+
         public ScoreEntity()
         {
 
@@ -23,19 +37,8 @@ namespace IncentiveCampaign.Domain.Score
             this.Contract = contract;
             this.Policy = policy;                
         }
+        
 
-        public int Id { get; set; }
-
-        public int Value { get; set; }
-
-        public bool IsBlocked { get; set; }
-
-        public string Descriprion { get; set; }
-
-        public string Proposal { get; set; }
-
-        public string Contract { get; set; }
-
-        public string Policy { get; set; }
     }
 }
+

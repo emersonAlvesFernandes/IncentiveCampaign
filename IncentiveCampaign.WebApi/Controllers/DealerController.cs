@@ -23,20 +23,6 @@ namespace IncentiveCampaign.WebApi.Controllers
             dealerApl = new DealerApl();
         }
 
-        // admin -> relação de deales com total de pontos 
-        [HttpGet]
-        [Route("")]
-        [ResponseType(typeof(List<DealerWithScoreAmmount>))]
-        public async Task<IHttpActionResult> GetAllDealersWithScoreAmmount()
-        {
-
-            var dealerCollection = await Task.Run(() => dealerApl.GetAll());
-
-            var dealersWithScoreAmmount = new DealerWithScoreAmmount().ToDealerWithScoreAmmount(dealerCollection);
-
-            return this.Ok(dealersWithScoreAmmount);
-        }
-
         //bmb -> relação de dealer por concessionária, tela de relacionamento de dealers para a campanha
         [HttpGet]
         [Route("dealership/{dealershipid}")]
