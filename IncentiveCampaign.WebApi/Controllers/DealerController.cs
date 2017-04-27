@@ -27,7 +27,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpGet]
         [Route("dealership/{dealershipid}")]
         [ResponseType(typeof(List<DealerSummary>))]
-        public async Task<IHttpActionResult> GetDealersByDealership([FromUri] int dealershipId)
+        public async Task<IHttpActionResult> GetDealersByDealershipAsync([FromUri] int dealershipId)
         {
             var collection = await Task.Run(() => dealerApl.GeByDealership(dealershipId));
 
@@ -41,7 +41,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [HttpPost]
         [Route("register")]
         [ResponseType(typeof(IDictionary<int, string>))]
-        public async Task<IHttpActionResult> RegisterDealerToCampaign([FromBody] DealerIds postParam)
+        public async Task<IHttpActionResult> RegisterDealerToCampaignAsync([FromBody] DealerIds postParam)
         {
             var collection = await Task.Run(() => dealerApl.RegisterToCampaign(postParam.Ids, postParam.CampaignId));
 

@@ -23,6 +23,7 @@ namespace IncentiveCampaign.WebApi.Controllers
             this.termApl = new TermApl();
         }
         
+        // admin -> tela de edição de campannha
         //*
         [HttpPost]
         [Route("{campaignId}/upload/term")]
@@ -37,6 +38,7 @@ namespace IncentiveCampaign.WebApi.Controllers
             return this.Ok();
         }
 
+        // admin -> tela de edição de campannha
         //TODO TESTAR ESTE FLUXO
         [HttpGet]
         [Route("{id}")]
@@ -44,6 +46,17 @@ namespace IncentiveCampaign.WebApi.Controllers
         public async Task<IHttpActionResult> DownloadAsync([FromUri] int id)
         {            
             var term = await Task.Run(()=> this.termApl.Download(id));
+
+            return this.Ok(term);
+        }
+
+        // admin -> tela de edição de campannha
+        [HttpDelete]
+        [Route("{id}")]
+        [ResponseType(typeof(TermEntity))]
+        public async Task<IHttpActionResult> DeleteAsync([FromUri] int id)
+        {
+            var term = await Task.Run(() => this.termApl.Delete(id));
 
             return this.Ok(term);
         }

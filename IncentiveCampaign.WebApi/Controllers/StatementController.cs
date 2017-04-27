@@ -13,14 +13,17 @@ namespace IncentiveCampaign.WebApi.Controllers
     [RoutePrefix("api/dealer")]
     public class StatementController : ApiController
     {
+
+        //TODO: Criar construtor, camada de apl e repositorio
+
         // admin -> relação de deales com total de pontos 
         [HttpGet]
         [Route("")]
         [ResponseType(typeof(List<DealerWithScoreAmmount>))]
-        public async Task<IHttpActionResult> GetAllDealersWithScoreAmmount()
+        public async Task<IHttpActionResult> GetAllDealersWithScoreAmmountAsync()
         {
-
-            
+            //TODO
+            return this.Ok();
         }
     }
 }

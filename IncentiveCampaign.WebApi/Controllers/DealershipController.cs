@@ -23,10 +23,12 @@ namespace IncentiveCampaign.WebApi.Controllers
             this.dealershipApl = new DealershipApl();
         }
 
+        //admin -> tela de editar campanhas, criação de concessionárias na campanha
+        //*
         [HttpPost]
         [Route("")]
         [ResponseType(typeof(bool))]
-        public async Task<IHttpActionResult> Create([FromBody] DealershipCreate dealershipCreate, 
+        public async Task<IHttpActionResult> CreateAsync([FromBody] DealershipCreate dealershipCreate, 
             [FromUri] int campaignId)
         {
             //var dealershipEntity = new DealershipCreate().ToDealershipEntity(dealershipCreate);
@@ -39,11 +41,13 @@ namespace IncentiveCampaign.WebApi.Controllers
             return this.Ok(registerSucceed);
         }
 
+        //admin -> tela de editar campanhas, delete de concessionárias na campanha
+        //*
+        //TODO: Verificar se pode deletar em caso de já haver pontuação vinculada naquela concessionária.
         [HttpDelete]
         [Route("")]
         [ResponseType(typeof(bool))]
-        public async Task<IHttpActionResult> Delete([FromUri]int campaignId,
-    [FromUri]int dealershipId)
+        public async Task<IHttpActionResult> DeleteAsync([FromUri]int campaignId, [FromUri]int dealershipId)
         {
             
             var registerSucceed = await Task.Run(() => dealershipApl.Delete(campaignId,

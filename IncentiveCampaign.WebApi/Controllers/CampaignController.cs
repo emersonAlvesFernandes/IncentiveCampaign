@@ -112,6 +112,9 @@ namespace IncentiveCampaign.WebApi.Controllers
             return this.Ok(returnCollection);
         }
 
+
+        //-----------------------------------------------------------------------------------
+
         //bmb -> tela do bmb gestor, todas as campanhas para a concessionária
         //*
         [HttpGet]

@@ -28,6 +28,8 @@ namespace IncentiveCampaign.WebApi.Controllers
         [ResponseType(typeof(List<ScoreEntity>))]
         public async Task<IHttpActionResult> GetAllByDealerId([FromBody] PeriodScore score)
         {
+            //TODO: o usuário eve ser obtido do token
+
             var collection = await Task.Run(() => scoreApl.GetByDealer(score.DealerId, score.StartDate, score.EndDate));
 
             return this.Ok(collection);
@@ -68,7 +70,7 @@ namespace IncentiveCampaign.WebApi.Controllers
             return this.Ok(collection);
         }
 
-        //admin
+        //admin -> tela de relação de pontos, seleção de usuários para baixa em lote.
         [HttpPost]
         [Route("dealers/writedown")]
         [ResponseType(typeof(List<ScoreEntity>))]
