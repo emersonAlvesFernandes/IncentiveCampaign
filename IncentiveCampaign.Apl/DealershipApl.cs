@@ -15,44 +15,69 @@ namespace IncentiveCampaign.Apl
         bool Register(int campaignId, DealershipEntity dealership);
 
         bool Delete(int campaignId, int dealershipId);
+
+        List<DealershipEntity> GetByCampaign(int campaignId);
+
+        List<DealershipEntity> GetByDealer(int dealerId);
+
+        DealershipEntity GetById(int dealershipId);
     }
 
     public class DealershipApl : IDealershipApl
     {
-        private readonly IDealershipDb dealershipDb;
-        private readonly IIncentiveCampaignDb incentiveCampaignDb;
+        private readonly IDealershipDb dealershipDb;        
+        private readonly IIncentiveCampaignApl incentiveCampaignApl;
 
         public DealershipApl(IDealershipDb dealershipDb,
-            IIncentiveCampaignDb incentiveCampaignDb)
+            IIncentiveCampaignApl incentiveCampaignApl)
         {
             this.dealershipDb = dealershipDb;
-            this.incentiveCampaignDb = incentiveCampaignDb;
+            this.incentiveCampaignApl = incentiveCampaignApl;
         }
 
         public DealershipApl()
         {
             this.dealershipDb = new DealershipCorporateDb();
-            this.incentiveCampaignDb = new IncentiveCampaignCorporateDb();
         }
 
         public bool Register(int campaignId, DealershipEntity dealership)
-        {
-            var relatedCampaign = incentiveCampaignDb.ReadById(campaignId);
+        {            
+            var relatedCampaign = incentiveCampaignApl.GetById(campaignId);
 
-            if (relatedCampaign != null)
-                return dealershipDb.Register(campaignId, dealership);
-            else
+            var dealershipsOnCampaign = dealershipDb.ReadByCampaign(campaignId);
+
+            if (dealershipsOnCampaign.Contains(dealership))
+                throw new Exception("Dealership.Already.Registered");
+
+            if (relatedCampaign == null)
                 throw new Exception("Campaign.Does.Not.Exists");
+            
+            return dealershipDb.Register(campaignId, dealership);                            
         }
 
         public bool Delete(int campaignId, int dealershipId)
         {
-            var relatedCampaign = incentiveCampaignDb.ReadById(campaignId);
+            var relatedCampaign = incentiveCampaignApl.GetById(campaignId);
 
-            if (relatedCampaign != null)
-                return dealershipDb.Delete(campaignId, dealershipId);
-            else
+            if (relatedCampaign == null)
                 throw new Exception("Campaign.Does.Not.Exists");
+            
+            return dealershipDb.Delete(campaignId, dealershipId);                            
+        }
+
+        public List<DealershipEntity> GetByCampaign(int campaignId)
+        {
+            return this.dealershipDb.ReadByCampaign(campaignId);
+        }
+
+        public List<DealershipEntity> GetByDealer(int dealerId)
+        {
+            return this.dealershipDb.ReadByDealer(dealerId);
+        }
+
+        public DealershipEntity GetById(int dealershipId)
+        {
+            return dealershipDb.ReadById(dealershipId);
         }
     }
 }

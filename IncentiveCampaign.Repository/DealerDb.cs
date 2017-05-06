@@ -7,18 +7,6 @@ using System.Threading.Tasks;
 
 namespace IncentiveCampaign.Repository
 {
-    public interface IDealerDb
-    {
-        List<DealerEntity> ReadAll();
-
-        DealerEntity ReadOnCorporateBase(int userId);
-
-        List<DealerEntity> ReadByDealerShip(int dealership);
-
-        DealerEntity ReadByIdAndCampaignId(int dealerId, int campaignId);        
-
-        bool RegisterToCampaign(int campaignId, int dealerId);        
-    }
 
     public class DealerDb : IDealerDb
     {

@@ -10,7 +10,7 @@ namespace IncentiveCampaign.Apl
 {
     public interface IStatementApl
     {
-        List<StatementItem> GetStatement();
+        List<StatementItemRow> GetStatement();
     }
 
     public class StatementApl : IStatementApl
@@ -22,13 +22,15 @@ namespace IncentiveCampaign.Apl
             this.statementDb = new StatementCorporateDb();
         }
 
-        public List<StatementItem> GetStatement()
+        public List<StatementItemRow> GetStatement()
         {
-            var collection = statementDb.ReadStatement();
+            var statementItens = statementDb.ReadStatement();
 
-            
+            var statementItemRow = new StatementItemRow();
 
-            return collection;
+            var returnCollection = statementItemRow.ToStatementRows(statementItens);
+
+            return returnCollection;
         }
     }
 }

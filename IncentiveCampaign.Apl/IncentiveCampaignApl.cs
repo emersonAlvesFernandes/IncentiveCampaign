@@ -29,42 +29,52 @@ namespace IncentiveCampaign.Apl
 
         List<IncentiveCampaignEntity> GetByDealership(int dealershipId);
 
-        List<IncentiveCampaignEntity> GetManagerCampaigns(int dealershipId, int managerId);
-
-        
-
+        List<IncentiveCampaignEntity> GetManagerCampaigns(int dealershipId, int managerId);        
     }
 
 
     public class IncentiveCampaignApl : IIncentiveCampaignApl
     {
         private readonly IIncentiveCampaignDb incentiveCampaignDb;
-        private readonly IDealershipDb dealershipDb;
-        private readonly IDealerDb dealerDb;
-        private readonly IScoreDb scoreDb;
-        private readonly ITermDb termDb;
+        //private readonly IDealershipDb dealershipDb;
+        //private readonly IDealerDb dealerDb;
+        //private readonly IScoreDb scoreDb;
+        //private readonly ITermDb termDb;
 
-        public IncentiveCampaignApl(IIncentiveCampaignDb incentiveCampaignDb, 
-            IDealershipDb dealershipDb, 
-            IDealerDb dealerDb, 
-            IScoreDb scoreDb,
-            ITermDb termDb)
+        private readonly IDealershipApl dealershipApl;
+        private readonly IDealerApl dealerApl;
+        private readonly IScoreApl scoreApl;
+        private readonly ITermApl termApl;
+
+        public IncentiveCampaignApl(IIncentiveCampaignDb incentiveCampaignDb,
+            IDealershipApl dealershipApl,
+            IDealerApl dealerApl,
+            IScoreApl scoreApl,
+            ITermApl termApl)
         {
-            this.incentiveCampaignDb = incentiveCampaignDb;            
-            this.dealershipDb = dealershipDb;
-            this.dealerDb = dealerDb;
-            this.scoreDb = scoreDb;
-            this.termDb = termDb;
+            this.incentiveCampaignDb = incentiveCampaignDb;
+            //this.dealershipDb = dealershipDb;
+            //this.dealerDb = dealerDb;
+            //this.scoreDb = scoreDb;
+            //this.termDb = termDb;
+            this.dealershipApl = dealershipApl;
+            this.dealerApl = dealerApl;
+            this.scoreApl = scoreApl;
+            this.termApl = termApl;
         }
 
         public IncentiveCampaignApl()
         {
             //incentiveCampaignDb = new IncentiveCampaignDb();
-            incentiveCampaignDb = new IncentiveCampaignCorporateDb();
-            dealershipDb = new DealershipCorporateDb();
-            dealerDb = new DealerDb();
-            scoreDb = new ScoreDb();
-            termDb = new TermCorporateDb();
+            this.incentiveCampaignDb = new IncentiveCampaignCorporateDb();
+            //this.dealershipDb = new DealershipCorporateDb();
+            //this.dealerDb = new DealerDb();
+            //this.scoreDb = new ScoreDb();
+            //this.termDb = new TermCorporateDb();
+            
+            this.dealershipApl = new DealershipApl();
+            this.dealerApl = new DealerApl();
+            this.termApl = new TermApl();
         }
 
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
@@ -77,13 +87,13 @@ namespace IncentiveCampaign.Apl
                 incentiveCampaign = incentiveCampaignDb.Create(incentiveCampaign);
 
                 foreach (var d in incentiveCampaign.Dealerships)
-                {
-                    var dealership = dealershipDb.Register(incentiveCampaign.Id, d);
+                {                    
+                    var dealership = this.dealershipApl.Register(incentiveCampaign.Id, d);                    
                 }
 
                 foreach (var t in incentiveCampaign.Terms)
                 {                    
-                    var term = termDb.Register(incentiveCampaign.Id, t, incentiveCampaign.UserName);
+                    var term = termApl.Register(incentiveCampaign.Id, t, incentiveCampaign.UserName);
                 }
 
                 transaction.Complete();
@@ -99,11 +109,11 @@ namespace IncentiveCampaign.Apl
         public IncentiveCampaignEntity Update(IncentiveCampaignEntity incentiveCampaign)
         {
             var checkedCampaign = this.GetById(incentiveCampaign.Id);
-            
-            if (checkedCampaign != null)            
-                incentiveCampaignDb.Update(incentiveCampaign);            
-            else
+
+            if (checkedCampaign == null)
                 throw new Exception("Campaign.does.not.exists");
+            
+            this.incentiveCampaignDb.Update(incentiveCampaign);                                        
 
             return incentiveCampaign;
         }
@@ -116,10 +126,8 @@ namespace IncentiveCampaign.Apl
         /// <param name="campaignId"></param>
         /// <returns></returns>
         public bool Delete(int campaignId)
-        {
-            //Todo incluir na transaction
+        {            
             return incentiveCampaignDb.Delete(campaignId);
-
         }
 
         public List<IncentiveCampaignEntity> GetAll()
@@ -131,12 +139,13 @@ namespace IncentiveCampaign.Apl
         {
             var campaign = incentiveCampaignDb.ReadById(campaignId);
 
-            if(campaign != null)
-            {
-                campaign.Dealerships = dealershipDb.ReadByCampaign(campaignId);
-                campaign.Terms = termDb.ReadByCampaign(campaignId);
-            }
-
+            if (campaign == null)
+                return null;
+                        
+            campaign.Dealerships = dealershipApl.GetByCampaign(campaignId);
+            
+            campaign.Terms = termApl.GetByCampaign(campaignId);
+            
             return campaign;
         }
 
@@ -156,11 +165,14 @@ namespace IncentiveCampaign.Apl
             
             foreach (var campaign in campaigns)
             {
-                var user = dealerDb.ReadByIdAndCampaignId(managerId, campaign.Id);
+                //var user = dealerDb.ReadByIdAndCampaignId(managerId, campaign.Id);
+                var user = this.dealerApl.GetByIdAndCampaignId(managerId, campaign.Id);
 
-                var dealership = dealershipDb.ReadById(dealershipId);
+                //var dealership = dealershipDb.ReadById(dealershipId);
+                var dealership = this.dealershipApl.GetById(dealershipId);
 
-                user.Scores = scoreDb.ReadByDealerAndDealership(dealership.Id, user.Id);
+                //user.Scores = scoreDb.ReadByDealerAndDealership(dealership.Id, user.Id);
+                user.Scores = this.scoreApl.GetByDealerAndDealership(dealership.Id, user.Id);
 
                 dealership.Dealers.Add(user);
 
@@ -173,7 +185,9 @@ namespace IncentiveCampaign.Apl
 
         public TermEntity Download(int termId)
         {
-            return termDb.Download(termId);
+            //return termDb.Download(termId);
+            return termApl.Download(termId);
         }
     }
 }
+

@@ -1,6 +1,7 @@
 ﻿using IncentiveCampaign.CorporateRepository;
 using IncentiveCampaign.Domain.IncentiveCampaign;
 using IncentiveCampaign.Domain.Term;
+using IncentiveCampaign.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +17,26 @@ namespace IncentiveCampaign.Apl
         TermEntity Download(int termId);        
 
         bool Delete(int termId);
+
+        TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser);
+
+        List<TermEntity> GetByCampaign(int campaignId);
     }
 
     public class TermApl : ITermApl
     {
-        private readonly IIncentiveCampaignDb incentiveCampaignDb;
+        private readonly IIncentiveCampaignApl incentiveCampaignApl;
         private readonly ITermDb termDb;
 
         public TermApl()
         {
-
+            this.incentiveCampaignApl = new IncentiveCampaignApl();
+            this.termDb = new TermDb();
         }
 
         public bool Delete(int termId)
         {
-            throw new NotImplementedException();
+            return termDb.Delete(termId);
         }
 
         public TermEntity Download(int termId)
@@ -40,12 +46,22 @@ namespace IncentiveCampaign.Apl
 
         public bool Upload(int campaignId, TermEntity term)
         {
-            var relatedCampaign = incentiveCampaignDb.ReadById(campaignId);
+            var relatedCampaign = incentiveCampaignApl.GetById(campaignId);
 
-            if (relatedCampaign != null)
-                return termDb.Upload(campaignId, term);
-            else
+            if (relatedCampaign == null)
                 throw new Exception("Campaign.Does.Not.Exists");
+            
+            return termDb.Upload(campaignId, term);                            
+        }
+
+        public TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser)
+        {
+            return termDb.Register(incentiveCampaignId, term, codUser);
+        }
+
+        public List<TermEntity> GetByCampaign(int campaignId)
+        {
+            return termDb.ReadByCampaign(campaignId);
         }
     }
 }

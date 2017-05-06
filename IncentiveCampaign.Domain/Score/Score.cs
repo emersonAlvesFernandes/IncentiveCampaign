@@ -36,9 +36,7 @@ namespace IncentiveCampaign.Domain.Score
             this.Proposal = proposal;
             this.Contract = contract;
             this.Policy = policy;                
-        }
-        
-
+        }        
     }
 }
 

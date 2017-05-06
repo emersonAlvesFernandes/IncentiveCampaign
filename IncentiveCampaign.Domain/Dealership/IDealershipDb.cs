@@ -11,8 +11,7 @@ namespace IncentiveCampaign.Domain.Dealership
         bool Register(int campaignId, DealershipEntity dealership);
 
         bool Delete(int campaignId, int dealershipId);
-
-        //Usado para garantir campanha existente
+        
         DealershipEntity ReadById(int dealershipId);
 
         List<DealershipEntity> ReadByCampaign(int campaign);

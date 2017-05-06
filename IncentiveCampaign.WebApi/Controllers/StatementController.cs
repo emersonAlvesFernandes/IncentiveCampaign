@@ -1,4 +1,6 @@
-﻿using IncentiveCampaign.WebApi.Models.Dealer;
+﻿using IncentiveCampaign.Apl;
+using IncentiveCampaign.Domain.Statement;
+using IncentiveCampaign.WebApi.Models.Dealer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +15,28 @@ namespace IncentiveCampaign.WebApi.Controllers
     [RoutePrefix("api/dealer")]
     public class StatementController : ApiController
     {
+        private readonly IStatementApl statementApl;
 
-        //TODO: Criar construtor, camada de apl e repositorio
+        public StatementController()
+        {
+            statementApl = new StatementApl();
+        }
+
+        public StatementController(IStatementApl statementApl)
+        {
+            this.statementApl = statementApl;
+        }
+        
 
         // admin -> relação de deales com total de pontos 
         [HttpGet]
-        [Route("")]
-        [ResponseType(typeof(List<DealerWithScoreAmmount>))]
+        [Route("statement")]
+        [ResponseType(typeof(List<StatementItemRow>))]
         public async Task<IHttpActionResult> GetAllDealersWithScoreAmmountAsync()
         {
-            //TODO
-            return this.Ok();
+            var collection = Task.Run(()=> statementApl.GetStatement());
+            
+            return this.Ok(collection);
         }
     }
 }

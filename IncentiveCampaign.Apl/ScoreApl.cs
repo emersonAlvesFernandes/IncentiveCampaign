@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace IncentiveCampaign.Apl
 {
@@ -12,11 +13,15 @@ namespace IncentiveCampaign.Apl
     {
         List<ScoreEntity> GetByDealer(int dealerId, DateTime from, DateTime To);
 
+        List<ScoreEntity> GetByDealer(int dealerId);
+
         List<ScoreEntity> GetOnlyValid(int dealerId);
 
         ScoreEntity CreateScore(ScoreEntity score);
 
         IDictionary<int, string> WriteDown(List<int> scoreIds);
+
+        List<ScoreEntity> GetByDealerAndDealership(int dealershipId, int dealerId);
     }
 
     public class ScoreApl : IScoreApl
@@ -40,12 +45,16 @@ namespace IncentiveCampaign.Apl
             return collection;
         }
 
+        public List<ScoreEntity> GetByDealer(int dealerId)
+        {
+            var collection = scoreDb.ReadByDealer(dealerId);
+
+            return collection;
+        }
+
         public ScoreEntity CreateScore(ScoreEntity score)
         {
-            return scoreDb.CreateScore(score);
-
-            //TODO: Inserir o termo
-
+            return scoreDb.CreateScore(score);            
         }
 
         public List<ScoreEntity> GetOnlyValid(int dealerId)
@@ -63,20 +72,10 @@ namespace IncentiveCampaign.Apl
         {
             //TODO: Resolver erro: estou criando ponto total abaixo, mas não está agrupado por campanha
 
-            var notFoundscores = new List<ScoreEntity>(); //new Dictionary<int, string>();
-            var foundScores = new List<ScoreEntity>();
+            var notFoundscores = this.GetFoundScores(scoresIds);
 
-            foreach(var s in scoresIds)
-            {
-                var score = this.ReadById(s);
-
-                if (score == null)
-                    //notFoundscores.Add(s, "score.not.found");
-                    notFoundscores.Add(score);
-                else
-                    foundScores.Add(score);
-            }            
-
+            var foundScores = this.GetNotFoundScores(scoresIds);
+            
             var total = foundScores
                 .Select(x => x.Value)
                 .Sum();
@@ -84,35 +83,59 @@ namespace IncentiveCampaign.Apl
             var description = "baixa de ponto(s) con id(s) "
                 + string.Join(", ", foundScores.Select(x=>x.Id.ToString()));
 
-            var scoreDown = new ScoreEntity(0, 
-                total, 
-                false,
-                description,
-                string.Empty, 
-                string.Empty, 
-                string.Empty);
-
-            //TODO: Colocar em transaction
-            scoreDb.WriteDown(scoreDown);
-
-
-            var allScoresResult = new Dictionary<int, string>();
-
-            foreach (var f in foundScores)
+            var scoreDown = new WriteDownScore(
+                total,                 
+                description);
+            
+            using (var transaction = new TransactionScope())
             {
-                scoreDb.Invalidate(f.Id);
-                allScoresResult.Add(f.Id, "ok");
-            }
+                scoreDb.WriteDown(scoreDown);
 
-            foreach(var notFound in notFoundscores)
-            {
-                allScoresResult.Add(notFound.Id, "score.not.found");
-            }
+                this.Invalidate(foundScores);
 
-            return allScoresResult;
+                transaction.Complete();
+            }
+            
+            var result = this.GetWriteDownScoresDictionary(foundScores, notFoundscores);
+            
+            return result;
         }
 
-        private ScoreEntity ReadById(int scoreId)
+        private List<ScoreEntity> GetFoundScores(List<int> scoresIds)
+        {
+            var foundScores = new List<ScoreEntity>();
+
+            foreach (var s in scoresIds)
+            {
+                var score = this.GetById(s);
+
+                if (score == null)
+                    continue;
+
+                foundScores.Add(score);                
+            }
+
+            return foundScores;
+        }
+
+        private List<ScoreEntity> GetNotFoundScores(List<int> scoresIds)
+        {
+            var notFoundScores = new List<ScoreEntity>();
+
+            foreach (var s in scoresIds)
+            {
+                var score = this.GetById(s);
+
+                if (score != null)
+                    continue;
+
+                notFoundScores.Add(score);
+            }
+
+            return notFoundScores;
+        }
+
+        private ScoreEntity GetById(int scoreId)
         {
             try
             {
@@ -124,11 +147,37 @@ namespace IncentiveCampaign.Apl
             }
         }
 
-        private void Invalidate(List<int> ids)
+        private void Invalidate(List<ScoreEntity> scores)
         {
+            var ids = scores.Select(x => x.Id);
+
             foreach(var id in ids)
-                scoreDb.Invalidate(id);
-            
+                scoreDb.Invalidate(id);            
+        }
+
+        private Dictionary<int, string> GetWriteDownScoresDictionary(
+            List<ScoreEntity> foundScores,
+            List<ScoreEntity> notFoundScores)
+        {
+            var allScoresResult = new Dictionary<int, string>();
+
+            foreach (var f in foundScores)
+            {
+                scoreDb.Invalidate(f.Id);
+                allScoresResult.Add(f.Id, "ok");
+            }
+
+            foreach (var notFound in notFoundScores)
+            {
+                allScoresResult.Add(notFound.Id, "score.not.found");
+            }
+
+            return allScoresResult;
+        }
+
+        public List<ScoreEntity> GetByDealerAndDealership(int dealershipId, int dealerId)
+        {
+            return scoreDb.ReadByDealerAndDealership(dealershipId, dealerId);
         }
     }
 }

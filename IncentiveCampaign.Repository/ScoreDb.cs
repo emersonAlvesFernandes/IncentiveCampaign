@@ -7,22 +7,6 @@ using System.Threading.Tasks;
 
 namespace IncentiveCampaign.Repository
 {
-    public interface IScoreDb
-    {
-        ScoreEntity ReadById(int scoreId);
-
-        List<ScoreEntity> ReadByDealer(int dealer);
-
-        List<ScoreEntity> ReadByDealer(int dealer, DateTime? From, DateTime? To);
-
-        List<ScoreEntity> ReadByDealerAndDealership(int dealershipId, int dealerId);
-
-        ScoreEntity CreateScore(ScoreEntity score);
-
-        bool WriteDown(ScoreEntity score);
-
-        void Invalidate(int ids);
-    }
 
     public class ScoreDb : IScoreDb
     {
@@ -59,6 +43,11 @@ namespace IncentiveCampaign.Repository
         }
 
         public void Invalidate(int ids)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool WriteDown(WriteDownScore score)
         {
             throw new NotImplementedException();
         }

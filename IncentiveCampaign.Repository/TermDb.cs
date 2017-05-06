@@ -29,9 +29,9 @@ namespace IncentiveCampaign.Repository
             throw new NotImplementedException();
         }
 
-        public int Upload(TermEntity term, int campaignId)
+        public bool Upload(int campaignId, TermEntity term)
         {
             throw new NotImplementedException();
-        }
+        }        
     }
 }

@@ -25,8 +25,6 @@ namespace IncentiveCampaign.Domain.IncentiveCampaign
         
         public List<DealershipEntity> Dealerships { get; set; }
 
-        public List<TermEntity> Terms { get; set; }
-        
-
+        public List<TermEntity> Terms { get; set; }        
     }
 }

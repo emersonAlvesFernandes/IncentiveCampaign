@@ -17,25 +17,37 @@ namespace IncentiveCampaign.Apl
         List<DealerEntity> GeByDealership(int dealershipId);
 
         IDictionary<int, string> RegisterToCampaign(List<int> ids, int campaignId);
+
+        DealerEntity GetByIdAndCampaignId(int dealerId, int campaignId);
     }
 
     public class DealerApl : IDealerApl
     {
         private readonly IDealerDb dealerDb;
-        private readonly IScoreDb scoreDb;
-        private readonly IDealershipDb dealershipDb;
-        private readonly IIncentiveCampaignDb campaignDb;
+        //private readonly IScoreDb scoreDb;
+        //private readonly IDealershipDb dealershipDb;
+        //private readonly IIncentiveCampaignDb campaignDb;
+        
+        private readonly IScoreApl scoreApl;
+        private readonly IDealershipApl dealershipApl;
+        private readonly IIncentiveCampaignApl campaignApl;
 
         public DealerApl()
         {
             this.dealerDb = new DealerDb();
-            this.scoreDb = new ScoreDb();
+            this.scoreApl = new ScoreApl();
+            this.dealershipApl = new DealershipApl();
+            this.campaignApl = new IncentiveCampaignApl();
         }
 
-        public DealerApl(IDealerDb dealerDb, IScoreDb scoreDb)
+        public DealerApl(IDealerDb dealerDb,
+            IDealershipApl dealershipApl,
+            IIncentiveCampaignApl campaignApl            
+            )
         {
             this.dealerDb = dealerDb;
-            this.scoreDb = scoreDb;
+            this.scoreApl = new ScoreApl();
+            this.campaignApl = new IncentiveCampaignApl();
         }
 
         public List<DealerEntity> GetAll()
@@ -44,8 +56,8 @@ namespace IncentiveCampaign.Apl
 
             foreach(var c in collection)
             {
-                c.Scores = scoreDb.ReadByDealer(c.Id);
-                c.Dealerships = dealershipDb.ReadByDealer(c.Id);
+                c.Scores = scoreApl.GetByDealer(c.Id);
+                c.Dealerships = dealershipApl.GetByDealer(c.Id);
             }
 
             return collection;
@@ -59,9 +71,10 @@ namespace IncentiveCampaign.Apl
 
         public IDictionary<int, string> RegisterToCampaign(List<int> ids, int campaignId)
         {
-            var campaign = campaignDb.ReadById(campaignId);
-            if(campaign == null)            
-                throw new Exception("campaign.not.found");
+            var campaign = campaignApl.GetById(campaignId);
+
+            if (campaign == null)            
+                throw new Exception("Campaign.Not.Found");
             
             var collection = new Dictionary<int, string>();
 
@@ -77,10 +90,14 @@ namespace IncentiveCampaign.Apl
 
                 var isSucceed = this.RegisterToCampaign(campaignId, id);
 
-                if(isSucceed)
-                    collection.Add(id, "ok");
-                else                
-                    collection.Add(id, "error.to.register");                
+                if (!isSucceed)
+                {
+                    collection.Add(id, "error.to.register");
+                    continue;
+                }
+
+                collection.Add(id, "ok");
+                                    
             }
             
             return collection;
@@ -95,7 +112,7 @@ namespace IncentiveCampaign.Apl
             catch(Exception ex)
             {
                 return null;
-            }
+            }            
         }
 
         private bool RegisterToCampaign(int campaignId, int id)
@@ -109,5 +126,11 @@ namespace IncentiveCampaign.Apl
                 return false;
             }            
         }
+
+        public DealerEntity GetByIdAndCampaignId(int dealerId, int campaignId)
+        {
+            return dealerDb.ReadByIdAndCampaignId(dealerId, campaignId);
+        }
+
     }
 }

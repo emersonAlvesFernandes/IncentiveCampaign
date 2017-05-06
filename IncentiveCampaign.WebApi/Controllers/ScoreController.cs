@@ -1,5 +1,6 @@
 ﻿using IncentiveCampaign.Apl;
 using IncentiveCampaign.Domain.Score;
+using IncentiveCampaign.Domain.Statement;
 using IncentiveCampaign.WebApi.Models.Score;
 using System;
 using System.Collections.Generic;
