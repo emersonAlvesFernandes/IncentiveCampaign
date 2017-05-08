@@ -11,13 +11,15 @@ namespace IncentiveCampaign.Apl
 {
     public interface IScoreApl
     {
+        //eliminar este método que será obtido pelo Statement
         List<ScoreEntity> GetByDealer(int dealerId, DateTime from, DateTime To);
 
+        //dados obtidos deste método serão referentes ao history
         List<ScoreEntity> GetByDealer(int dealerId);
 
         List<ScoreEntity> GetOnlyValid(int dealerId);
 
-        ScoreEntity CreateScore(ScoreEntity score);
+        ScoreEntity CreateScore(int? campaignId, int dealershipId, int dealerId, ScoreEntity score);
 
         IDictionary<int, string> WriteDown(List<int> scoreIds);
 
@@ -27,15 +29,24 @@ namespace IncentiveCampaign.Apl
     public class ScoreApl : IScoreApl
     {
         private readonly IScoreDb scoreDb;
+        private readonly IDealershipApl dealershipApl;
+        private readonly IIncentiveCampaignApl campaignApl;
+        private readonly IDealerApl dealerApl;
+
 
         public ScoreApl()
         {
             this.scoreDb = new ScoreDb();
+            this.dealershipApl = new DealershipApl();
+            this.campaignApl = new IncentiveCampaignApl();
         }
 
-        public ScoreApl(IScoreDb scoreDb)
+        public ScoreApl(IScoreDb scoreDb, IDealershipApl dealershipApl,IIncentiveCampaignApl campaignApl, IDealerApl dealerApl)
         {
             this.scoreDb = scoreDb;
+            this.dealershipApl = dealershipApl;
+            this.campaignApl = campaignApl;
+            this.dealerApl = dealerApl;
         }
 
         public List<ScoreEntity> GetByDealer(int dealerId, DateTime from, DateTime To)
@@ -52,13 +63,24 @@ namespace IncentiveCampaign.Apl
             return collection;
         }
 
-        public ScoreEntity CreateScore(ScoreEntity score)
-        {
-            return scoreDb.CreateScore(score);            
+        public ScoreEntity CreateScore(int? campaignId, int dealershipId, int dealerId, ScoreEntity score)
+        {            
+            if(campaignId == 0)
+            {
+                campaignApl.Check((int)campaignId);
+            }
+
+            dealerApl.Check(dealerId);
+
+            dealershipApl.Check(dealershipId);
+            
+            return scoreDb.CreateScore(campaignId, dealershipId, score);            
         }
 
         public List<ScoreEntity> GetOnlyValid(int dealerId)
         {
+            dealerApl.Check(dealerId);
+
             var allScores = scoreDb.ReadByDealer(dealerId, null, null);
 
             var collection = allScores
@@ -72,9 +94,9 @@ namespace IncentiveCampaign.Apl
         {
             //TODO: Resolver erro: estou criando ponto total abaixo, mas não está agrupado por campanha
 
-            var notFoundscores = this.GetFoundScores(scoresIds);
+            var foundScores = this.GetFoundScores(scoresIds);
 
-            var foundScores = this.GetNotFoundScores(scoresIds);
+            var notfoundScores = this.GetNotFoundScores(scoresIds);
             
             var total = foundScores
                 .Select(x => x.Value)
@@ -96,7 +118,7 @@ namespace IncentiveCampaign.Apl
                 transaction.Complete();
             }
             
-            var result = this.GetWriteDownScoresDictionary(foundScores, notFoundscores);
+            var result = this.GetWriteDownScoresDictionary(foundScores, notfoundScores);
             
             return result;
         }
@@ -177,7 +199,9 @@ namespace IncentiveCampaign.Apl
 
         public List<ScoreEntity> GetByDealerAndDealership(int dealershipId, int dealerId)
         {
+            dealerApl.Check(dealerId);
+
             return scoreDb.ReadByDealerAndDealership(dealershipId, dealerId);
-        }
+        }                        
     }
 }

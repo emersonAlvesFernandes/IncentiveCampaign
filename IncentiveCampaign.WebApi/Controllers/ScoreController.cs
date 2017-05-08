@@ -1,4 +1,5 @@
-﻿using IncentiveCampaign.Apl;
+﻿using FastMapper;
+using IncentiveCampaign.Apl;
 using IncentiveCampaign.Domain.Score;
 using IncentiveCampaign.Domain.Statement;
 using IncentiveCampaign.WebApi.Models.Score;
@@ -23,31 +24,19 @@ namespace IncentiveCampaign.WebApi.Controllers
             scoreApl = new ScoreApl();
         }
 
-        //admin / bmb (extrato com pontos e baixas)
+        //bmb (history) TODO: Implementar o mesmo na api do bmb
         [HttpPost]
         [Route("")]
         [ResponseType(typeof(List<ScoreEntity>))]
         public async Task<IHttpActionResult> GetAllByDealerId([FromBody] PeriodScore score)
-        {
-            //TODO: o usuário eve ser obtido do token
-
+        {            
             var collection = await Task.Run(() => scoreApl.GetByDealer(score.DealerId, score.StartDate, score.EndDate));
 
             return this.Ok(collection);
         }
 
         //admin tela de relação de pontos (ao clicar no botão de baixa) criar ponto manualmente
-        [HttpPost]
-        [Route("create")]
-        [ResponseType(typeof(ScoreEntity))]
-        public async Task<IHttpActionResult> CreateScore([FromBody] ScoreEntity score)
-        {
-            var collection = await Task.Run(() => scoreApl.CreateScore(score));
-
-            return this.Ok(collection);
-        }
-
-        //admin tela de relação de pontos (ao clicar no botão de baixa) criar ponto manualmente
+        //(history)
         [HttpGet]
         [Route("")]
         [ResponseType(typeof(List<ScoreEntity>))]
@@ -57,6 +46,24 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             return this.Ok(collection);
         }
+
+        //admin tela de relação de pontos (ao clicar no botão de baixa) criar ponto manualmente
+        [HttpPost]
+        [Route("create")]
+        [ResponseType(typeof(ScoreEntity))]
+        public async Task<IHttpActionResult> CreateScore([FromBody] ScoreCreate scoreCreate)
+        {
+
+            var scoreEntity =                 
+                TypeAdapter.Adapt<ScoreCreate, ScoreEntity>(scoreCreate);
+
+            var collection = await Task.Run(() => scoreApl.CreateScore(scoreCreate.CampaignId,
+                scoreCreate.DealershipId,
+                scoreCreate.DealerId,
+                scoreEntity));
+
+            return this.Ok(collection);
+        }        
 
         //admin tela de relação de pontos (ao clicar no botão de baixa) criar ponto manualmente
         [HttpPost]
@@ -71,16 +78,15 @@ namespace IncentiveCampaign.WebApi.Controllers
             return this.Ok(collection);
         }
 
-        //admin -> tela de relação de pontos, seleção de usuários para baixa em lote.
-        [HttpPost]
-        [Route("dealers/writedown")]
-        [ResponseType(typeof(List<ScoreEntity>))]
-        public async Task<IHttpActionResult> WriteDownScoresByDealers([FromBody]ScoresIds scoresIds)
+        [HttpDelete]
+        [Route("{id}")]
+        [ResponseType(typeof(bool))]
+        public async Task<IHttpActionResult> DeleteAsync([FromUri] int id)
         {
-            //TODO
-            //Fazer método de criação de pontos via importação de planilha    
             return this.Ok();
         }
+
+
 
     }
 }

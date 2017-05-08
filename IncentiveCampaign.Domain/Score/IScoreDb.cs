@@ -16,7 +16,7 @@ namespace IncentiveCampaign.Domain.Score
 
         List<ScoreEntity> ReadByDealerAndDealership(int dealershipId, int dealerId);
 
-        ScoreEntity CreateScore(ScoreEntity score);
+        ScoreEntity CreateScore(int? campaignId, int dealershipId, ScoreEntity score);
 
         bool WriteDown(WriteDownScore score);
 

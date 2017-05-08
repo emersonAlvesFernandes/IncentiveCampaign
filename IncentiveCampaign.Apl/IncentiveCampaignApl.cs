@@ -1,6 +1,7 @@
 ﻿using IncentiveCampaign.CorporateRepository;
 using IncentiveCampaign.Domain.Dealership;
 using IncentiveCampaign.Domain.IncentiveCampaign;
+using IncentiveCampaign.Domain.Interface.Apl;
 using IncentiveCampaign.Domain.Term;
 using IncentiveCampaign.Repository;
 using System;
@@ -29,18 +30,16 @@ namespace IncentiveCampaign.Apl
 
         List<IncentiveCampaignEntity> GetByDealership(int dealershipId);
 
-        List<IncentiveCampaignEntity> GetManagerCampaigns(int dealershipId, int managerId);        
+        List<IncentiveCampaignEntity> GetManagerCampaigns(int dealershipId, int managerId);
+
+        void Check(int campaignId);
     }
 
 
     public class IncentiveCampaignApl : IIncentiveCampaignApl
     {
         private readonly IIncentiveCampaignDb incentiveCampaignDb;
-        //private readonly IDealershipDb dealershipDb;
-        //private readonly IDealerDb dealerDb;
-        //private readonly IScoreDb scoreDb;
-        //private readonly ITermDb termDb;
-
+        
         private readonly IDealershipApl dealershipApl;
         private readonly IDealerApl dealerApl;
         private readonly IScoreApl scoreApl;
@@ -52,11 +51,7 @@ namespace IncentiveCampaign.Apl
             IScoreApl scoreApl,
             ITermApl termApl)
         {
-            this.incentiveCampaignDb = incentiveCampaignDb;
-            //this.dealershipDb = dealershipDb;
-            //this.dealerDb = dealerDb;
-            //this.scoreDb = scoreDb;
-            //this.termDb = termDb;
+            this.incentiveCampaignDb = incentiveCampaignDb;            
             this.dealershipApl = dealershipApl;
             this.dealerApl = dealerApl;
             this.scoreApl = scoreApl;
@@ -65,13 +60,9 @@ namespace IncentiveCampaign.Apl
 
         public IncentiveCampaignApl()
         {
-            //incentiveCampaignDb = new IncentiveCampaignDb();
-            this.incentiveCampaignDb = new IncentiveCampaignCorporateDb();
-            //this.dealershipDb = new DealershipCorporateDb();
-            //this.dealerDb = new DealerDb();
-            //this.scoreDb = new ScoreDb();
-            //this.termDb = new TermCorporateDb();
-            
+            //this.incentiveCampaignDb = new IncentiveCampaignCorporateDb();            
+            this.incentiveCampaignDb = new IncentiveCampaignDb();
+
             this.dealershipApl = new DealershipApl();
             this.dealerApl = new DealerApl();
             this.termApl = new TermApl();
@@ -187,6 +178,11 @@ namespace IncentiveCampaign.Apl
         {
             //return termDb.Download(termId);
             return termApl.Download(termId);
+        }
+
+        public void Check(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

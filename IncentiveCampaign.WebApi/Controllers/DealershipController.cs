@@ -55,5 +55,16 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             return this.Ok(registerSucceed);
         }
+
+        //admin - Tela de inserção de pontos manuais
+        [HttpGet]
+        [Route("{dealerId}")]
+        [ResponseType(typeof(DealershipSummary))]
+        public async Task<IHttpActionResult> GetByUserIdAsync([FromUri] int dealerId)
+        {
+            var collection = await Task.Run(() => dealershipApl.GetByDealer(dealerId));
+
+            return this.Ok(collection);
+        }
     }
 }

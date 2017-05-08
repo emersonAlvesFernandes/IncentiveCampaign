@@ -1,0 +1,1 @@
+C:\Users\Pichau\Source\Repos\IncentiveCampaign\IncentiveCampaign.Bmb.WebApi\obj\Debug\IncentiveCampaign.Bmb.WebApi.csprojResolveAssemblyReference.cache

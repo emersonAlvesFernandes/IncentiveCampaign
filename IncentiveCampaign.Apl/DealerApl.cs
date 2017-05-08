@@ -1,6 +1,7 @@
 ﻿using IncentiveCampaign.Domain.Dealer;
 using IncentiveCampaign.Domain.Dealership;
 using IncentiveCampaign.Domain.IncentiveCampaign;
+using IncentiveCampaign.Domain.Interface.Apl;
 using IncentiveCampaign.Repository;
 using System;
 using System.Collections.Generic;
@@ -19,15 +20,18 @@ namespace IncentiveCampaign.Apl
         IDictionary<int, string> RegisterToCampaign(List<int> ids, int campaignId);
 
         DealerEntity GetByIdAndCampaignId(int dealerId, int campaignId);
+
+        //Verificação de usuário na inserção de pontos
+        DealerEntity GetCorporateDealerById(int dealerId);
+
+        void Check(int dealerId);
+
     }
 
     public class DealerApl : IDealerApl
     {
         private readonly IDealerDb dealerDb;
-        //private readonly IScoreDb scoreDb;
-        //private readonly IDealershipDb dealershipDb;
-        //private readonly IIncentiveCampaignDb campaignDb;
-        
+                
         private readonly IScoreApl scoreApl;
         private readonly IDealershipApl dealershipApl;
         private readonly IIncentiveCampaignApl campaignApl;
@@ -130,6 +134,21 @@ namespace IncentiveCampaign.Apl
         public DealerEntity GetByIdAndCampaignId(int dealerId, int campaignId)
         {
             return dealerDb.ReadByIdAndCampaignId(dealerId, campaignId);
+        }
+
+        public DealerEntity GetCorporateDealerById(int dealerId)
+        {
+            return dealerDb.ReadCorporateDealerById(dealerId);
+        }
+
+        public void Check(int dealerId)
+        {
+            var dealer = dealerDb.ReadCorporateDealerById(dealerId);
+            if (!dealer.IsValidatedDealer())
+                throw new Exception("Invalid.Dealer");
+
+            if (!dealer.IsRegistered())
+                throw new Exception("UnRegistered.IncentiveCampaign.Dealer");
         }
 
     }

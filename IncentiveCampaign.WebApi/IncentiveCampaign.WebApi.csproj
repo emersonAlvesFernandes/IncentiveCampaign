@@ -145,8 +145,8 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AgreementLetterController.cs" />
     <Compile Include="Controllers\CampaignController.cs" />
-    <Compile Include="Controllers\DealerController.cs" />
     <Compile Include="Controllers\DealershipController.cs" />
     <Compile Include="Controllers\ScoreController.cs" />
     <Compile Include="Controllers\StatementController.cs" />
@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Models\Dealership\DealershipCreate.cs" />
     <Compile Include="Models\Dealership\DealershipSummary.cs" />
+    <Compile Include="Models\Dealer\AgreementLetterCreate.cs" />
     <Compile Include="Models\Dealer\DealerIds.cs" />
     <Compile Include="Models\Dealer\DealerSummary.cs" />
     <Compile Include="Models\Dealer\DealerWithScoreAmmount.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithLists.cs" />
     <Compile Include="Models\IncentiveCampaign\IncentiveCampaignWithScoreAmmount.cs" />
     <Compile Include="Models\Score\PeriodScore.cs" />
+    <Compile Include="Models\Score\ScoreCreate.cs" />
     <Compile Include="Models\Score\ScoresIds.cs" />
     <Compile Include="Models\Term\TermCreate.cs" />
     <Compile Include="Models\Term\TermSummary.cs" />

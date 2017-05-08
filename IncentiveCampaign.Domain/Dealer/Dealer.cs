@@ -18,9 +18,29 @@ namespace IncentiveCampaign.Domain.Dealer
 
         public bool AcceptedTerm { get; set; }
 
+        public bool IsValidated { get; set; }
+
         public List<DealershipEntity> Dealerships { get; set; }
 
         public List<ScoreEntity> Scores { get; set; }
+
+        public bool IsValid { get; set; }
+
+        public bool IsValidatedDealer()
+        {
+            if (this.IsValid == false)
+                return false;
+            return true;
+        }
+
+        public bool IsRegistered()
+        {
+            if (this.Id == 0)
+                return false;
+
+            return true;
+        }
+
     }
 }
 

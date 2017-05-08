@@ -15,5 +15,21 @@ namespace IncentiveCampaign.Domain.Dealership
         public bool AgreementLetterSent { get; set; }
 
         public List<DealerEntity> Dealers { get; set; }      
+
+        public bool IsRegistered()
+        {
+            if (this.Id == 0)
+                return false;
+            return true;
+        }
+
+        public bool IsValidByAgreementLetter(bool agreementLetterIsNeeded)
+        {
+            if (agreementLetterIsNeeded == true &&
+                this.AgreementLetterSent == false)
+                return false;
+            return true;
+        }
+
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IncentiveCampaign.Domain.Dealer;
 
 namespace IncentiveCampaign.Repository
 {
@@ -37,6 +38,16 @@ namespace IncentiveCampaign.Repository
         }
 
         public bool Register(int campaignId, DealershipEntity dealership)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UploadAgreementLetter(int dealershipId, AgreementLetter agreementLetter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AgreementLetter DownloadAgreementLetter(int campaignId, int dealershipId)
         {
             throw new NotImplementedException();
         }

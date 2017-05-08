@@ -14,7 +14,7 @@ using System.Web.Http.Description;
 
 namespace IncentiveCampaign.WebApi.Controllers
 {
-    [RoutePrefix("api/campaign")]
+    [RoutePrefix("api/incentivecampaigns")]
     public class CampaignController : ApiController
     {
         private readonly IIncentiveCampaignApl incentiveCampaignApl;

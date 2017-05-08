@@ -1,7 +1,5 @@
-﻿using FastMapper;
-using IncentiveCampaign.Apl;
-using IncentiveCampaign.Domain.Dealer;
-using IncentiveCampaign.WebApi.Models.Dealer;
+﻿using IncentiveCampaign.Apl;
+using IncentiveCampaign.Bmb.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +9,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
-namespace IncentiveCampaign.WebApi.Controllers
+namespace IncentiveCampaign.Bmb.WebApi.Controllers
 {
-    [RoutePrefix("api/dealer")]
+    [RoutePrefix("api/userincentivecampaigns")]
     public class DealerController : ApiController
     {
         private readonly IDealerApl dealerApl;
@@ -47,6 +45,5 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             return this.Ok();
         }
-
     }
 }

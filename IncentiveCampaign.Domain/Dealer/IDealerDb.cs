@@ -17,5 +17,8 @@ namespace IncentiveCampaign.Domain.Dealer
         DealerEntity ReadByIdAndCampaignId(int dealerId, int campaignId);
 
         bool RegisterToCampaign(int campaignId, int dealerId);
+
+        DealerEntity ReadCorporateDealerById(int dealerId);        
+
     }
 }

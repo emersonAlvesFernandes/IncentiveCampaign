@@ -34,7 +34,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [ResponseType(typeof(List<StatementItemRow>))]
         public async Task<IHttpActionResult> GetAllDealersWithScoreAmmountAsync()
         {
-            var collection = Task.Run(()=> statementApl.GetStatement());
+            var collection = await Task.Run(()=> statementApl.GetStatement());
             
             return this.Ok(collection);
         }

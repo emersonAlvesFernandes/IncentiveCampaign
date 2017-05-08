@@ -42,10 +42,12 @@
   <ItemGroup>
     <Compile Include="Dealership\Dealership.cs" />
     <Compile Include="Dealership\IDealershipDb.cs" />
+    <Compile Include="Dealer\AgreementLetter.cs" />
     <Compile Include="Dealer\Dealer.cs" />
     <Compile Include="Dealer\IDealerDb.cs" />
     <Compile Include="IncentiveCampaign\IIncentiveCampaignDb.cs" />
     <Compile Include="IncentiveCampaign\IncentiveCampaignEntity.cs" />
+    <Compile Include="Interface\Apl\ICheckable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regional\Regional.cs" />
     <Compile Include="Score\IScoreDb.cs" />

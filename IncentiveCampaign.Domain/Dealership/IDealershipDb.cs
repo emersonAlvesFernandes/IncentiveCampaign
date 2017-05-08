@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IncentiveCampaign.Domain.Dealer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,9 @@ namespace IncentiveCampaign.Domain.Dealership
         List<DealershipEntity> ReadByCampaign(int campaign);
 
         List<DealershipEntity> ReadByDealer(int dealerId);
+
+        bool UploadAgreementLetter(int dealershipId, AgreementLetter agreementLetter);
+
+        AgreementLetter DownloadAgreementLetter(int campaignId, int dealershipId);
     }
 }

@@ -32,7 +32,7 @@ namespace IncentiveCampaign.Repository
             throw new NotImplementedException();
         }
 
-        public ScoreEntity CreateScore(ScoreEntity score)
+        public ScoreEntity CreateScore(int? campaignId, int dealershipId, ScoreEntity score)
         {
             throw new NotImplementedException();
         }
