@@ -16,6 +16,8 @@ namespace IncentiveCampaign.Domain.Term
 
         public string Extention { get; set; }
 
+        public DateTime PublishDate { get; set; }
+
         public long TotalBytes
         {
             get { return this.Contents.Length; }

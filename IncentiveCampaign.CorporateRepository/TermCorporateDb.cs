@@ -51,8 +51,7 @@ namespace IncentiveCampaign.CorporateRepository
                 this.connector.Dispose();
             }
         }
-
-        //TODO: Terminar aqui
+        
         public bool Upload(int campaignId, TermEntity term)
         {
             throw new NotImplementedException();

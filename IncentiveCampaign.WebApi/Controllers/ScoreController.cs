@@ -42,7 +42,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [ResponseType(typeof(List<ScoreEntity>))]
         public async Task<IHttpActionResult> GetValidByDealerId([FromUri] int dealerId)
         {
-            var collection = await Task.Run(() => scoreApl.GetOnlyValid(dealerId));
+            var collection = await Task.Run(() => scoreApl.GetHistoryScores(dealerId));
 
             return this.Ok(collection);
         }

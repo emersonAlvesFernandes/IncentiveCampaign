@@ -8,7 +8,7 @@ namespace IncentiveCampaign.Domain.Term
 {
     public interface ITermDb
     {
-        TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser);
+        bool Register(int incentiveCampaignId, TermEntity term, string codUser);
 
         bool Upload(int campaignId, TermEntity term);
 

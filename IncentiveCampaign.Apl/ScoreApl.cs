@@ -17,7 +17,7 @@ namespace IncentiveCampaign.Apl
         //dados obtidos deste método serão referentes ao history
         List<ScoreEntity> GetByDealer(int dealerId);
 
-        List<ScoreEntity> GetOnlyValid(int dealerId);
+        List<ScoreEntity> GetHistoryScores(int dealerId);
 
         ScoreEntity CreateScore(int? campaignId, int dealershipId, int dealerId, ScoreEntity score);
 
@@ -77,7 +77,7 @@ namespace IncentiveCampaign.Apl
             return scoreDb.CreateScore(campaignId, dealershipId, score);            
         }
 
-        public List<ScoreEntity> GetOnlyValid(int dealerId)
+        public List<ScoreEntity> GetHistoryScores(int dealerId)
         {
             dealerApl.Check(dealerId);
 
