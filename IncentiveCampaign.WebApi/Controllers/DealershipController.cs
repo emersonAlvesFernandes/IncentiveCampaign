@@ -23,6 +23,11 @@ namespace IncentiveCampaign.WebApi.Controllers
             this.dealershipApl = new DealershipApl();
         }
 
+        public DealershipController(IDealershipApl dealershipApl)
+        {
+            this.dealershipApl = dealershipApl;
+        }
+
         //admin -> tela de editar campanhas, criação de concessionárias na campanha
         //*
         [HttpPost]

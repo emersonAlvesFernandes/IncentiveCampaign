@@ -24,6 +24,11 @@ namespace IncentiveCampaign.WebApi.Controllers
             scoreApl = new ScoreApl();
         }
 
+        public ScoreController(IScoreApl scoreApl)
+        {
+            this.scoreApl = scoreApl;
+        }
+
         //bmb (history) TODO: Implementar o mesmo na api do bmb
         [HttpPost]
         [Route("")]

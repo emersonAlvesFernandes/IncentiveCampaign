@@ -11,6 +11,10 @@ namespace IncentiveCampaign.WebApi.Models.Dealer
 
         public byte[] Content { get; set; }
 
-        public string Extention { get; set; }        
+        public string Extention { get; set; }     
+        
+        public int CampaignId { get; set; }
+
+        public int DealershipId { get; set; }
     }
 }

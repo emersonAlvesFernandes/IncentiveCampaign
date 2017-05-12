@@ -23,18 +23,18 @@ namespace IncentiveCampaign.Repository
         public SqlConnection connection { get; set; }
         public string connectionstring = ConfigurationManager.ConnectionStrings["IncentiveCampaignDataBase"].ConnectionString;
 
-        public RepositoryBase()
-        {
-            try
-            {
-                this.Initialize();
-                this.OpenConnection();
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //public RepositoryBase()
+        //{
+        //    try
+        //    {
+        //        //this.Initialize();
+        //        //this.OpenConnection();
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   throw;
+        //    }
+        //}
 
         public bool CloseConnection()
         {
@@ -52,6 +52,7 @@ namespace IncentiveCampaign.Repository
         public void Initialize()
         {
             this.connection = new SqlConnection(connectionstring);
+            this.OpenConnection();
         }
 
         public bool OpenConnection()

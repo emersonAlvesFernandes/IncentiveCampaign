@@ -18,7 +18,7 @@ namespace IncentiveCampaign.Apl
 
         bool Delete(int termId);
 
-        TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser);
+        bool Register(int incentiveCampaignId, TermEntity term, string codUser);
 
         List<TermEntity> GetByCampaign(int campaignId);
     }
@@ -54,7 +54,7 @@ namespace IncentiveCampaign.Apl
             return termDb.Upload(campaignId, term);                            
         }
 
-        public TermEntity Register(int incentiveCampaignId, TermEntity term, string codUser)
+        public bool Register(int incentiveCampaignId, TermEntity term, string codUser)
         {
             return termDb.Register(incentiveCampaignId, term, codUser);
         }

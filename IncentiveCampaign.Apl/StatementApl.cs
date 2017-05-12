@@ -1,5 +1,6 @@
 ﻿using IncentiveCampaign.CorporateRepository;
 using IncentiveCampaign.Domain.Statement;
+using IncentiveCampaign.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace IncentiveCampaign.Apl
 
         public StatementApl()
         {
-            this.statementDb = new StatementCorporateDb();
+            //this.statementDb = new StatementCorporateDb();
+            this.statementDb = new StatementDb();
         }
 
         public List<StatementItemRow> GetStatement()

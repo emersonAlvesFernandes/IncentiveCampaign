@@ -22,7 +22,12 @@ namespace IncentiveCampaign.WebApi.Controllers
         {
             this.termApl = new TermApl();
         }
-        
+
+        public TermController(ITermApl termApl)
+        {
+            this.termApl = termApl;
+        }
+
         // admin -> tela de edição de campannha
         //*
         [HttpPost]

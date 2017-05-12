@@ -49,7 +49,8 @@ namespace IncentiveCampaign.Apl
 
         public DealershipApl()
         {
-            this.dealershipDb = new DealershipCorporateDb();
+            //this.dealershipDb = new DealershipCorporateDb();
+            this.dealershipDb = new DealershipDb();
             this.dealerApl = new DealerApl();            
         }
 

@@ -22,7 +22,7 @@ namespace IncentiveCampaign.WebApi.Controllers
             statementApl = new StatementApl();
         }
 
-        public StatementController(IStatementApl statementApl)
+        StatementController(IStatementApl statementApl)
         {
             this.statementApl = statementApl;
         }

@@ -1,5 +1,7 @@
-﻿using IncentiveCampaign.Apl;
+﻿using FastMapper;
+using IncentiveCampaign.Apl;
 using IncentiveCampaign.Bmb.WebApi.Models;
+using IncentiveCampaign.Domain.Dealer;
 using System;
 using System.Collections.Generic;
 using System.Linq;

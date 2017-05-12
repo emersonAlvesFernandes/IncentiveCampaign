@@ -11,16 +11,18 @@ namespace IncentiveCampaign.Repository
 
     public class IncentiveCampaignDb : RepositoryBase, IIncentiveCampaignDb
     {
-        public IncentiveCampaignDb(): base()
+        public IncentiveCampaignDb()
         {
-            this.connection = new SqlConnection(connectionstring);
-            this.OpenConnection();
+            //this.connection = new SqlConnection(connectionstring);
+            //this.OpenConnection();            
         }
 
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
-        {
+        {            
             try
-            {
+            {                
+                base.Initialize();
+
                 #region query
                 var sql = @"INSERT INTO tbl_campa_incen 
                 (
@@ -72,7 +74,7 @@ namespace IncentiveCampaign.Repository
             }
             finally
             {
-                this.connection.Close();
+                connection.Close();
             }
         }
 

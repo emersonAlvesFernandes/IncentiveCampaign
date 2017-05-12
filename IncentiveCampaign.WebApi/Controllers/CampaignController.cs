@@ -24,6 +24,10 @@ namespace IncentiveCampaign.WebApi.Controllers
             incentiveCampaignApl = new IncentiveCampaignApl();
         }
 
+        public CampaignController(IIncentiveCampaignApl incentiveCampaignApl)
+        {
+            incentiveCampaignApl = incentiveCampaignApl;
+        }
 
         //TESTADO OK
         //admin -> criação de campanhas

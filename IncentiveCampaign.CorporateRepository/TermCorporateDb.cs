@@ -147,6 +147,11 @@ namespace IncentiveCampaign.CorporateRepository
             {
                 this.connector.Dispose();
             }
-        }        
+        }
+
+        bool ITermDb.Register(int incentiveCampaignId, TermEntity term, string codUser)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

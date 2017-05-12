@@ -15,8 +15,8 @@ namespace IncentiveCampaign.Repository
     {
         public DealershipDb()
         {
-            this.connection = new SqlConnection(connectionstring);
-            this.OpenConnection();
+            //this.connection = new SqlConnection(connectionstring);
+            //this.OpenConnection();
         }
 
         public DealershipEntity Create(int campaignId, DealershipEntity incentiveCampaign)

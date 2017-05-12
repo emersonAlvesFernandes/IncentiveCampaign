@@ -12,8 +12,8 @@ namespace IncentiveCampaign.Repository
     {
         public TermDb()
         {
-            this.connection = new SqlConnection(connectionstring);
-            this.OpenConnection();
+            //this.connection = new SqlConnection(connectionstring);
+            //this.OpenConnection();
         }
 
         public bool Delete(int termId)

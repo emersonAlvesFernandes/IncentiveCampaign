@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IncentiveCampaign.Domain.Dealer;
 
 namespace IncentiveCampaign.CorporateRepository
 {
@@ -183,6 +184,16 @@ namespace IncentiveCampaign.CorporateRepository
             {
                 this.connector.Dispose();
             }
+        }
+
+        public bool UploadAgreementLetter(int dealershipId, AgreementLetter agreementLetter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AgreementLetter DownloadAgreementLetter(int campaignId, int dealershipId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

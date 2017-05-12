@@ -34,5 +34,10 @@ namespace IncentiveCampaign.Repository
         {
             throw new NotImplementedException();
         }
+
+        public DealerEntity ReadCorporateDealerById(int dealerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

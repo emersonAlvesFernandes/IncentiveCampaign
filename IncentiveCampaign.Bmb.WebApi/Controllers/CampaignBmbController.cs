@@ -15,6 +15,16 @@ namespace IncentiveCampaign.Bmb.WebApi.Controllers
     public class CampaignBmbController : ApiController
     {
         private readonly IIncentiveCampaignApl incentiveCampaignApl;
+
+        public CampaignBmbController()
+        {
+            this.incentiveCampaignApl = new IncentiveCampaignApl();
+        }
+
+        public CampaignBmbController(IIncentiveCampaignApl incentiveCampaignApl)
+        {
+            this.incentiveCampaignApl = incentiveCampaignApl;
+        }
         
         [HttpGet]
         [Route("{dealershipId}/manager")]
