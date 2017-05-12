@@ -187,9 +187,9 @@
     <Folder Include="Models\Regional\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IncentiveCampaign.Apl\IncentiveCampaign.Apl.csproj">
-      <Project>{4bcbba9a-9784-44b7-9293-98485d953693}</Project>
-      <Name>IncentiveCampaign.Apl</Name>
+    <ProjectReference Include="..\IncentiveCampaign.AppService\IncentiveCampaign.AppService.csproj">
+      <Project>{3dbe98e3-c0c7-4f2c-bee1-02a26b0708ab}</Project>
+      <Name>IncentiveCampaign.AppService</Name>
     </ProjectReference>
     <ProjectReference Include="..\IncentiveCampaign.CorporateRepository\IncentiveCampaign.CorporateRepository.csproj">
       <Project>{a0be240a-f360-46e7-937d-18ed09c7d14a}</Project>

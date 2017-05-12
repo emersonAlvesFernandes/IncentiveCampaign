@@ -35,37 +35,32 @@ namespace IncentiveCampaign.Apl
     public class DealershipApl : IDealershipApl
     {
         private readonly IDealershipDb dealershipDb;        
-        private readonly IIncentiveCampaignApl incentiveCampaignApl;
-        private readonly IDealerApl dealerApl;        
+        //private readonly IIncentiveCampaignApl incentiveCampaignApl;
+        //private readonly IDealerApl dealerApl;        
 
         public DealershipApl(IDealershipDb dealershipDb,
             IIncentiveCampaignApl incentiveCampaignApl,
             IDealerApl dealerApl)
         {
             this.dealershipDb = dealershipDb;
-            this.incentiveCampaignApl = incentiveCampaignApl;
-            this.dealerApl = dealerApl;
+            //this.incentiveCampaignApl = incentiveCampaignApl;
+            //this.dealerApl = dealerApl;
         }
 
         public DealershipApl()
         {
             //this.dealershipDb = new DealershipCorporateDb();
             this.dealershipDb = new DealershipDb();
-            this.dealerApl = new DealerApl();            
+            //this.dealerApl = new DealerApl();            
         }
 
         public bool Register(int campaignId, DealershipEntity dealership)
-        {            
-            var relatedCampaign = incentiveCampaignApl.GetById(campaignId);
-
+        {                        
             var dealershipsOnCampaign = dealershipDb.ReadByCampaign(campaignId);
 
             if (dealershipsOnCampaign.Contains(dealership))
-                throw new Exception("Dealership.Already.Registered");
+                throw new Exception("Dealership.Already.Registered");                
 
-            if (relatedCampaign == null)
-                throw new Exception("Campaign.Does.Not.Exists");
-            
             return dealershipDb.Register(campaignId, dealership);                            
         }
 

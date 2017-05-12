@@ -40,22 +40,23 @@ namespace IncentiveCampaign.Apl
     {
         private readonly IIncentiveCampaignDb incentiveCampaignDb;
         
-        private readonly IDealershipApl dealershipApl;
-        private readonly IDealerApl dealerApl;
-        private readonly IScoreApl scoreApl;
-        private readonly ITermApl termApl;
+        //private readonly IDealershipApl dealershipApl;
+        //private readonly IDealerApl dealerApl;
+        //private readonly IScoreApl scoreApl;
+        //private readonly ITermApl termApl;
 
-        public IncentiveCampaignApl(IIncentiveCampaignDb incentiveCampaignDb,
-            IDealershipApl dealershipApl,
-            IDealerApl dealerApl,
-            IScoreApl scoreApl,
-            ITermApl termApl)
+        public IncentiveCampaignApl(IIncentiveCampaignDb incentiveCampaignDb
+            //IDealershipApl dealershipApl,
+            //IDealerApl dealerApl,
+            //IScoreApl scoreApl,
+            //ITermApl termApl
+            )
         {
             this.incentiveCampaignDb = incentiveCampaignDb;            
-            this.dealershipApl = dealershipApl;
-            this.dealerApl = dealerApl;
-            this.scoreApl = scoreApl;
-            this.termApl = termApl;
+            //this.dealershipApl = dealershipApl;
+            //this.dealerApl = dealerApl;
+            //this.scoreApl = scoreApl;
+            //this.termApl = termApl;
         }
 
         public IncentiveCampaignApl()
@@ -69,27 +70,14 @@ namespace IncentiveCampaign.Apl
         }
 
         public IncentiveCampaignEntity Create(IncentiveCampaignEntity incentiveCampaign)
-        {            
-            using (var transaction = new TransactionScope())
-            {
-                incentiveCampaign.CreationDate = DateTime.Now;
-                incentiveCampaign.IsActive = true;                
-
-                incentiveCampaign = incentiveCampaignDb.Create(incentiveCampaign);
-
-                foreach (var d in incentiveCampaign.Dealerships)
-                {                    
-                    var dealership = this.dealershipApl.Register(incentiveCampaign.Id, d);                    
-                }
-
-                foreach (var t in incentiveCampaign.Terms)
-                {                    
-                    var term = termApl.Register(incentiveCampaign.Id, t, incentiveCampaign.UserName);
-                }
-
-                transaction.Complete();
-                return incentiveCampaign;
-            }  
+        {
+            //Check if name already exists
+            var allCampaigns = incentiveCampaignDb.ReadAll();
+            var names = allCampaigns.Select(x => x.Name.ToUpper());
+            if (names.Contains(incentiveCampaign.Name))
+                throw new Exception("Already.Exists.Campaign.With.This.Name");
+            
+            return this.incentiveCampaignDb.Create(incentiveCampaign);
         }
 
         /// <summary>
@@ -132,11 +120,7 @@ namespace IncentiveCampaign.Apl
 
             if (campaign == null)
                 return null;
-                        
-            campaign.Dealerships = dealershipApl.GetByCampaign(campaignId);
-            
-            campaign.Terms = termApl.GetByCampaign(campaignId);
-            
+                                                
             return campaign;
         }
 

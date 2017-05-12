@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace IncentiveCampaign.WebApi.Models
 {
     public class IncentiveCampaignCreate
-    {
+    {        
         //public int Id { get; set; }
 
         public string Name { get; set; }

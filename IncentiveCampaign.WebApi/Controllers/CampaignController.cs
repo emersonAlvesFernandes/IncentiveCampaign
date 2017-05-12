@@ -1,12 +1,9 @@
 ﻿using FastMapper;
 using IncentiveCampaign.Apl;
-using IncentiveCampaign.Domain.Dealership;
+using IncentiveCampaign.AppService;
 using IncentiveCampaign.Domain.IncentiveCampaign;
-using IncentiveCampaign.Domain.Term;
 using IncentiveCampaign.WebApi.Models;
-using IncentiveCampaign.WebApi.Models.Dealership;
 using IncentiveCampaign.WebApi.Models.IncentiveCampaign;
-using IncentiveCampaign.WebApi.Models.Term;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -17,16 +14,16 @@ namespace IncentiveCampaign.WebApi.Controllers
     [RoutePrefix("api/incentivecampaigns")]
     public class CampaignController : ApiController
     {
-        private readonly IIncentiveCampaignApl incentiveCampaignApl;
+        private readonly IIncentiveCampaignAppService incentiveCampaignAppService;
 
         public CampaignController()
         {
-            incentiveCampaignApl = new IncentiveCampaignApl();
+            incentiveCampaignAppService = new IncentiveCampaignAppService();
         }
 
-        public CampaignController(IIncentiveCampaignApl incentiveCampaignApl)
+        public CampaignController(IIncentiveCampaignAppService incentiveCampaignAppService)
         {
-            incentiveCampaignApl = incentiveCampaignApl;
+            this.incentiveCampaignAppService = incentiveCampaignAppService;
         }
 
         //TESTADO OK
@@ -43,7 +40,7 @@ namespace IncentiveCampaign.WebApi.Controllers
 
             campaignEntity.UserName = "RBRONZO";
             
-            var entity = await Task.Run(() => incentiveCampaignApl.Create(campaignEntity));
+            var entity = await Task.Run(() => incentiveCampaignAppService.Create(campaignEntity));
             
             return this.Ok();            
         }
@@ -56,7 +53,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [ResponseType(typeof(List<IncentiveCampaignSummary>))]
         public async Task<IHttpActionResult> GetAllAsync()
         {
-            var collection = await Task.Run(() => incentiveCampaignApl.GetAll());
+            var collection = await Task.Run(() => incentiveCampaignAppService.GetAll());
 
             var returnCollection =
                 TypeAdapter.Adapt<List<IncentiveCampaignEntity>, List<IncentiveCampaignSummary>>(collection);
@@ -72,7 +69,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [ResponseType(typeof(IncentiveCampaignWithLists))]
         public async Task<IHttpActionResult> GetByIdAsync([FromUri] int campaignId)
         {
-            var entity = await Task.Run(() => incentiveCampaignApl.GetById(campaignId));
+            var entity = await Task.Run(() => incentiveCampaignAppService.GetById(campaignId));
 
             var summary =
                 TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignWithLists>(entity);
@@ -91,7 +88,7 @@ namespace IncentiveCampaign.WebApi.Controllers
             var campaignEntity =
                 TypeAdapter.Adapt<IncentiveCampaignUpdate, IncentiveCampaignEntity>(incentiveCampaignCreate);
 
-            var entity = await Task.Run(() => incentiveCampaignApl.Update(campaignEntity));
+            var entity = await Task.Run(() => incentiveCampaignAppService.Update(campaignEntity));
 
             var summary =
                 TypeAdapter.Adapt<IncentiveCampaignEntity, IncentiveCampaignSummary>(entity);
@@ -107,7 +104,7 @@ namespace IncentiveCampaign.WebApi.Controllers
         [ResponseType(typeof(List<IncentiveCampaignSummary>))]
         public async Task<IHttpActionResult> GetByDealerIdAsync([FromUri]int dealerId)
         {
-            var collection = await Task.Run(() => incentiveCampaignApl.GetByDealer(dealerId));
+            var collection = await Task.Run(() => incentiveCampaignAppService.GetByDealer(dealerId));
 
             var returnCollection =
                 TypeAdapter.Adapt<List<IncentiveCampaignEntity>, List<IncentiveCampaignSummary>>(collection);

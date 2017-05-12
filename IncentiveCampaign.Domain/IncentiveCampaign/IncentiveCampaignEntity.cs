@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace IncentiveCampaign.Domain.IncentiveCampaign
 {
     public class IncentiveCampaignEntity
-    {
+    {        
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -25,6 +25,15 @@ namespace IncentiveCampaign.Domain.IncentiveCampaign
         
         public List<DealershipEntity> Dealerships { get; set; }
 
-        public List<TermEntity> Terms { get; set; }        
+        public List<TermEntity> Terms { get; set; }                
+
+        public void Initialize()
+        {
+            this.CreationDate = DateTime.Now;
+            this.IsActive = true;
+            
+            if (this.StartDate > this.EndDate)
+                throw new Exception("Invalid.Dates");
+        }
     }
 }
